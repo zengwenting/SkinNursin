@@ -1,0 +1,14 @@
+[2026-03-17 22:13:46.363] INFO  12324 [           main]com.tacomall.apiopen.ApiOpenApplication.logStarting（）@50 : Starting ApiOpenApplication using Java 17.0.18 with PID 12324 (E:\毕业设计\code\tacomall\server\api\open\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server)
+[2026-03-17 22:13:46.368] INFO  12324 [           main]com.tacomall.apiopen.ApiOpenApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-03-17 22:13:48.034] INFO  12324 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-03-17 22:13:48.040] INFO  12324 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-03-17 22:13:48.095] INFO  12324 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+[2026-03-17 22:13:49.843] INFO  12324 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4000 (http)
+[2026-03-17 22:13:49.861] INFO  12324 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4000"]
+[2026-03-17 22:13:49.865] INFO  12324 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-03-17 22:13:49.866] INFO  12324 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-03-17 22:13:50.064] INFO  12324 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-03-17 22:13:50.064] INFO  12324 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 3604 ms
+[2026-03-17 22:13:51.490] INFO  12324 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@215 : dynamic-datasource start closing ....
+[2026-03-17 22:13:51.490] INFO  12324 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@219 : dynamic-datasource all closed success,bye
+[2026-03-17 22:13:51.499] INFO  12324 [           main]org.apache.catalina.core.StandardService.log（）@173 : Stopping service [Tomcat]
