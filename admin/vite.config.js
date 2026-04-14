@@ -1,4 +1,5 @@
 import { fileURLToPath, URL } from 'url'
+import path from 'path' // 1. 新增這一行
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -23,10 +24,13 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      // 2. 新增這一段代碼，強制指定 axios 的路徑
+      'axios': path.resolve(__dirname, 'node_modules/axios')
     }
   },
   css: {
+    // ... 後面的代碼保持不變 ...
     preprocessorOptions: {
       less: {
         charset: false,

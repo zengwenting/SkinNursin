@@ -1,165 +1,200 @@
 <template>
-  <view class="page index">
-    <weixin-wrapper>
-      <template v-slot:nav>
-        <view class="index_slogan">
-          <view class="slogan_logo">
-            <image :src="STATIC_PATH('logo-icon_small.png')" />
-          </view>
-          <view class="slogan_search">
-            <view class="search_left">
-              <text class="iconfont">&#xe86e;</text>
-              <text class="left_text">搜索好品，共有16523件商品</text>
-            </view>
-          </view>
+  <view class="page home-page healing-shell">
+    <view class="home-layout">
+      <view class="top-zone">
+        <view class="home-copy">
+          <text class="title">智能面部护理助手</text>
+          <text class="desc">把护肤、分析和记录，轻轻收进每天都愿意打开的治愈节奏里。</text>
         </view>
-      </template>
-      <view class="index_main">
-        <view class="main_tabs">
-          <scroll-view>
-            <view class="tabs_wrapper">
-              <view class="wrapper_item" :key="key" v-for="(item, key) in getVal('productClassificationForNavList', [])">
-                <text>{{ item.name }}</text>
-              </view>
-            </view>
-          </scroll-view>
-        </view>
-        <view class="main_banner">
-          <swiper class="banner_swiper" :indicator-dots="true" :autoplay="true" interval="2000" duration="3000">
-            <swiper-item :key="key" v-for="(item, key) in getVal('carousalList', [])">
-              <view class="swiper_item">
-                <image :src="item.url" />
-              </view>
-            </swiper-item>
-          </swiper>
-        </view>
-        <view class="main_service">
-          <view class="service_item">
-            <text class="iconfont">&#xe6a4;</text>
-            <text class="item_text">精选品牌</text>
-          </view>
-          <view class="service_item">
-            <text class="iconfont">&#xe609;</text>
-            <text class="item_text">30天无忧退换</text>
-          </view>
-          <view class="service_item">
-            <text class="iconfont">&#xe600;</text>
-            <text class="item_text">48小时快速退款</text>
-          </view>
-        </view>
-        <view class="main_category">
-          <view class="category_item" :key="key" v-for="(item, key) in getVal('productClassificationForGridList', [])">
-            <image src="http://yanxuan.nosdn.127.net/fede8b110c502ec5799702d5ec824792.png" />
-            <text>{{ item.name }}</text>
-          </view>
-        </view>
-        <view class="main_flash">
-          <view class="flash_header">
-            <div class="header_left">
-              <view class="left_text">
-                <text>限时购</text>
-              </view>
-              <view class="left_time">
-                <view class="time_item">
-                  <text>01</text>
-                </view>
-                <view class="time_item">
-                  <text>23</text>
-                </view>
-                <view class="time_item">
-                  <text>12</text>
-                </view>
-              </view>
-            </div>
-            <div class="header_right">
-              <text>更多</text>
-              <text class="iconfont">&#xe601;</text>
-            </div>
-          </view>
-          <view class="flash_content">
-            <view class="content_item" :key="key" v-for="(item, key) in getVal('productForSecKill', [])">
-              <view class="item_image">
-                <image
-                  src="http://yanxuan.nosdn.127.net/598a7792fdef09260c6c6fb0ca4fa5cc.png?imageView&thumbnail=216x216&quality=75" />
-              </view>
-              <view class="item_price">
-                <text>￥10</text>
-                <text>￥5.0</text>
-              </view>
-            </view>
-          </view>
-        </view>
-        <template v-for="(item, key) in []">
-          <view class="main_direct-supply" :key="key" v-if="item.k == 'HOT'">
-            <view class="supply_header">
-              <div class="header_left">
-                <text>{{ item.name }}</text>
-              </div>
-              <div class="header_right">
-                <text>更多</text>
-                <text class="iconfont">&#xe93d;</text>
-              </div>
-            </view>
-            <view class="supply_content">
-              <view class="content_item" :key="key" v-for="(item, key) in []">
-                <view class="item_desc">
-                  <text>海外制造商</text>
-                  <text>24元起</text>
-                </view>
-                <image
-                  src="http://yanxuan.nosdn.127.net/74e2ea8f81004d0a60f90fc8e4649058.png?imageView&thumbnail=343y260&enlarge=1" />
-              </view>
-            </view>
-          </view>
-          <view class="main_newest" :key="key" v-if="false">
-            <view class="newest_header">
-              <div class="header_left">
-                <text>{{ item.name }}</text>
-              </div>
-              <div class="header_right">
-                <text>更多</text>
-                <text class="iconfont">&#xe93d;</text>
-              </div>
-            </view>
-            <view class="newest_content">
-              <view class="content_item" :key="key" v-for="(item, key) in []">
-                <view class="item_image">
-                  <image
-                    src="http://yanxuan.nosdn.127.net/598a7792fdef09260c6c6fb0ca4fa5cc.png?imageView&thumbnail=216x216&quality=75" />
-                </view>
-                <view class="i-price">
-                  <text>￥3.2</text>
-                  <text>￥5.0</text>
-                </view>
-              </view>
-            </view>
-          </view>
-        </template>
       </view>
-    </weixin-wrapper>
+
+      <view class="middle-zone">
+        <button class="checkin-card" hover-class="checkin-card--hover" @click="goCheckin">
+          <image class="calendar-icon" :src="calendarIcon" mode="aspectFit" />
+          <text class="checkin-label">{{ checkedIn ? "查看详情" : "打卡" }}</text>
+        </button>
+        <text v-if="checkedIn" class="checkin-tip">完成今日打卡，你太棒了！</text>
+      </view>
+
+      <view class="bottom-zone">
+        <view class="quick-actions">
+          <button class="quick-action" hover-class="quick-action--hover" @click="goSkinTest">肤质分析</button>
+          <button class="quick-action" hover-class="quick-action--hover" @click="goSkinData">皮肤数据</button>
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
 <script setup>
-import { ref, onMounted, reactive } from 'vue'
-import weixinWrapper from '@/components/weixin-wrapper'
-import { checkToken, pullDownRefresh, pageLoad } from "@/composables/page";
-import { STATIC_PATH } from '@/config'
-import { $toast, go, ready } from 'codingtalk-uni-toolkit';
+import { computed, onMounted } from "vue";
+import { onShow } from "@dcloudio/uni-app";
+import useAppStore from "@/store/app";
+import { STATIC_PATH } from "@/config";
 
-const { queryInfo, getVal, resetInfo } = pageLoad('index', {}, null, { autoLoad: false })
+const appStore = useAppStore();
+const checkedIn = computed(() => appStore.todayCheckin?.checkedIn);
+const calendarIcon = STATIC_PATH("\u65e5\u5386.png");
 
-pullDownRefresh((ok) => {
-  queryInfo().then(() => {
-    ok()
-  })
-})
-ready().then(() => {
-  queryInfo()
-})
+const goCheckin = () => {
+  uni.navigateTo({
+    url: checkedIn.value ? "/pages/checkin-detail/index" : "/pages/checkin/index",
+  });
+};
+
+const goSkinTest = () => {
+  uni.navigateTo({ url: "/pages/skin-test/index" });
+};
+
+const goSkinData = () => {
+  uni.navigateTo({ url: "/pages/skin-data/index" });
+};
+
+const refreshPage = () => {
+  appStore.refreshTodayCheckin();
+  appStore.refreshUser();
+};
+
+onMounted(refreshPage);
+onShow(refreshPage);
 </script>
 
-
 <style lang="less">
-@import url("./__style__/index.less");
+.home-page {
+  overflow: hidden;
+
+  .home-layout {
+    min-height: calc(100vh - 84rpx);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top-zone,
+  .middle-zone,
+  .bottom-zone {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .top-zone {
+    align-items: flex-start;
+    padding-top: 220rpx;
+  }
+
+  .home-copy {
+    width: 100%;
+    padding-left: 28rpx;
+    text-align: left;
+  }
+
+  .title {
+    display: block;
+    color: #514b7a;
+    font-size: 56rpx;
+    font-weight: 800;
+    letter-spacing: 2rpx;
+    text-shadow: 0 10rpx 24rpx rgba(255, 255, 255, 0.72);
+  }
+
+  .desc {
+    display: block;
+    max-width: 520rpx;
+    margin: 22rpx 0 0;
+    color: #7d8196;
+    font-size: 28rpx;
+    line-height: 1.8;
+  }
+
+  .middle-zone {
+    flex-direction: column;
+    padding: 12rpx 0 36rpx;
+  }
+
+  .checkin-card {
+    width: 340rpx;
+    height: 340rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22rpx;
+    border: none;
+    border-radius: 56rpx;
+    background: linear-gradient(145deg, #fffafd 0%, #ffe9f3 52%, #eef8ff 100%);
+    box-shadow:
+      0 30rpx 76rpx rgba(230, 178, 208, 0.34),
+      inset 0 0 0 3rpx rgba(255, 255, 255, 0.78);
+  }
+
+  .checkin-card::after {
+    border: none;
+  }
+
+  .checkin-card--hover {
+    transform: scale(0.97);
+    background: linear-gradient(145deg, #fff2f8 0%, #ffdce9 52%, #e2f5ff 100%);
+    box-shadow:
+      0 20rpx 46rpx rgba(225, 157, 195, 0.4),
+      inset 0 0 0 3rpx rgba(255, 255, 255, 0.92);
+  }
+
+  .calendar-icon {
+    width: 140rpx;
+    height: 140rpx;
+  }
+
+  .checkin-label {
+    color: #252b38;
+    font-size: 52rpx;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .checkin-tip {
+    margin-top: 24rpx;
+    color: #d1709f;
+    font-size: 26rpx;
+    font-weight: 600;
+    letter-spacing: 1rpx;
+  }
+
+  .bottom-zone {
+    align-items: flex-end;
+    padding-bottom: 54rpx;
+  }
+
+  .quick-actions {
+    width: 100%;
+    display: flex;
+    gap: 26rpx;
+  }
+
+  .quick-action {
+    flex: 1;
+    min-height: 100rpx;
+    border: none;
+    border-radius: 999rpx;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 244, 249, 0.96) 100%);
+    box-shadow:
+      0 18rpx 34rpx rgba(230, 188, 214, 0.26),
+      inset 0 0 0 2rpx rgba(255, 255, 255, 0.88);
+    color: #252b38;
+    font-size: 34rpx;
+    font-weight: 600;
+  }
+
+  .quick-action--hover {
+    transform: translateY(-4rpx);
+    background: linear-gradient(180deg, #fff1f7 0%, #ffe0ec 100%);
+    box-shadow:
+      0 24rpx 42rpx rgba(229, 173, 204, 0.34),
+      inset 0 0 0 2rpx rgba(255, 255, 255, 0.94);
+  }
+
+  .quick-action::after {
+    border: none;
+  }
+}
 </style>

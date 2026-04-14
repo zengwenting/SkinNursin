@@ -1,0 +1,80 @@
+[2026-03-18 17:00:03.394] INFO  22920 [kground-preinit]org.hibernate.validator.internal.util.Version.<clinit>（）@21 : HV000001: Hibernate Validator 8.0.1.Final
+[2026-03-18 17:00:03.458] INFO  22920 [           main]com.tacomall.apima.ApiMaApplication.logStarting（）@50 : Starting ApiMaApplication using Java 17.0.18 with PID 22920 (E:\毕业设计\code\tacomall\server\api\ma\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\ma)
+[2026-03-18 17:00:03.461] INFO  22920 [           main]com.tacomall.apima.ApiMaApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-03-18 17:00:04.732] INFO  22920 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-03-18 17:00:04.736] INFO  22920 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-03-18 17:00:04.782] INFO  22920 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+[2026-03-18 17:00:06.075] INFO  22920 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4002 (http)
+[2026-03-18 17:00:06.086] INFO  22920 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4002"]
+[2026-03-18 17:00:06.088] INFO  22920 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-03-18 17:00:06.088] INFO  22920 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-03-18 17:00:06.236] INFO  22920 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-03-18 17:00:06.237] INFO  22920 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 2673 ms
+[2026-03-18 17:00:08.164] INFO  22920 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@44 : JedisPool injected successfully
+[2026-03-18 17:00:08.164] INFO  22920 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@45 : redis address：127.0.0.1:6379
+[2026-03-18 17:00:08.425] INFO  22920 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@215 : dynamic-datasource start closing ....
+[2026-03-18 17:00:08.425] INFO  22920 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@219 : dynamic-datasource all closed success,bye
+[2026-03-18 17:00:08.428] INFO  22920 [           main]org.apache.catalina.core.StandardService.log（）@173 : Stopping service [Tomcat]
+[2026-03-18 17:06:28.586] INFO  13072 [kground-preinit]org.hibernate.validator.internal.util.Version.<clinit>（）@21 : HV000001: Hibernate Validator 8.0.1.Final
+[2026-03-18 17:06:28.651] INFO  13072 [           main]com.tacomall.apima.ApiMaApplication.logStarting（）@50 : Starting ApiMaApplication using Java 17.0.18 with PID 13072 (E:\毕业设计\code\tacomall\server\api\ma\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\ma)
+[2026-03-18 17:06:28.653] INFO  13072 [           main]com.tacomall.apima.ApiMaApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-03-18 17:06:29.845] INFO  13072 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-03-18 17:06:29.848] INFO  13072 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-03-18 17:06:29.889] INFO  13072 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+[2026-03-18 17:06:31.117] INFO  13072 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4002 (http)
+[2026-03-18 17:06:31.127] INFO  13072 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4002"]
+[2026-03-18 17:06:31.131] INFO  13072 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-03-18 17:06:31.131] INFO  13072 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-03-18 17:06:31.297] INFO  13072 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-03-18 17:06:31.298] INFO  13072 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 2574 ms
+[2026-03-18 17:06:32.386] INFO  13072 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@215 : dynamic-datasource start closing ....
+[2026-03-18 17:06:32.386] INFO  13072 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@219 : dynamic-datasource all closed success,bye
+[2026-03-18 17:06:32.390] INFO  13072 [           main]org.apache.catalina.core.StandardService.log（）@173 : Stopping service [Tomcat]
+[2026-03-18 17:16:06.288] INFO  24040 [kground-preinit]org.hibernate.validator.internal.util.Version.<clinit>（）@21 : HV000001: Hibernate Validator 8.0.1.Final
+[2026-03-18 17:16:06.340] INFO  24040 [           main]com.tacomall.apima.ApiMaApplication.logStarting（）@50 : Starting ApiMaApplication using Java 17.0.18 with PID 24040 (E:\毕业设计\code\tacomall\server\api\ma\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\ma)
+[2026-03-18 17:16:06.342] INFO  24040 [           main]com.tacomall.apima.ApiMaApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-03-18 17:16:07.431] INFO  24040 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-03-18 17:16:07.435] INFO  24040 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-03-18 17:16:07.485] INFO  24040 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+[2026-03-18 17:16:08.770] INFO  24040 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4002 (http)
+[2026-03-18 17:16:08.783] INFO  24040 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4002"]
+[2026-03-18 17:16:08.785] INFO  24040 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-03-18 17:16:08.786] INFO  24040 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-03-18 17:16:08.992] INFO  24040 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-03-18 17:16:08.993] INFO  24040 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 2583 ms
+[2026-03-18 17:16:10.192] INFO  24040 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@215 : dynamic-datasource start closing ....
+[2026-03-18 17:16:10.192] INFO  24040 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@219 : dynamic-datasource all closed success,bye
+[2026-03-18 17:16:10.194] INFO  24040 [           main]org.apache.catalina.core.StandardService.log（）@173 : Stopping service [Tomcat]
+[2026-03-18 17:22:45.950] INFO  25136 [kground-preinit]org.hibernate.validator.internal.util.Version.<clinit>（）@21 : HV000001: Hibernate Validator 8.0.1.Final
+[2026-03-18 17:22:46.012] INFO  25136 [           main]com.tacomall.apima.ApiMaApplication.logStarting（）@50 : Starting ApiMaApplication using Java 17.0.18 with PID 25136 (E:\毕业设计\code\tacomall\server\api\ma\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\ma)
+[2026-03-18 17:22:46.015] INFO  25136 [           main]com.tacomall.apima.ApiMaApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-03-18 17:22:47.154] INFO  25136 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-03-18 17:22:47.157] INFO  25136 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-03-18 17:22:47.199] INFO  25136 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+[2026-03-18 17:22:48.560] INFO  25136 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4002 (http)
+[2026-03-18 17:22:48.572] INFO  25136 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4002"]
+[2026-03-18 17:22:48.575] INFO  25136 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-03-18 17:22:48.576] INFO  25136 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-03-18 17:22:48.750] INFO  25136 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-03-18 17:22:48.751] INFO  25136 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 2666 ms
+[2026-03-18 17:22:50.241] INFO  25136 [           main]com.tacomall.common.config.WxMaConfiguration.init（）@98 : ? 微信小程序服務初始化成功！共加載 1 個配置。
+[2026-03-18 17:22:50.562] INFO  25136 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@44 : JedisPool injected successfully
+[2026-03-18 17:22:50.563] INFO  25136 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@45 : redis address：127.0.0.1:6379
+[2026-03-18 17:22:50.697] INFO  25136 [           main]com.tacomall.common.config.WxPayConfiguration.wxService（）@32 : ?? 檢測到微信支付配置初始化，正在使用開發者硬編碼模式...
+[2026-03-18 17:22:50.853] INFO  25136 [           main]com.tacomall.common.config.WxPayConfiguration.wxService（）@57 : ? 微信支付服務 (WxPayService) 初始化成功！(硬編碼模式)
+[2026-03-18 17:22:52.280] INFO  25136 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4002"]
+[2026-03-18 17:22:52.325] INFO  25136 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.start（）@221 : Tomcat started on port 4002 (http) with context path ''
+[2026-03-18 17:22:52.359] INFO  25136 [           main]com.tacomall.apima.ApiMaApplication.logStarted（）@56 : Started ApiMaApplication in 7.056 seconds (process running for 7.741)
+[2026-03-18 17:29:20.591] INFO  25136 [nio-4002-exec-1]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2026-03-18 17:29:20.592] INFO  25136 [nio-4002-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@532 : Initializing Servlet 'dispatcherServlet'
+[2026-03-18 17:29:20.596] INFO  25136 [nio-4002-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@554 : Completed initialization in 4 ms
+[2026-03-18 17:59:56.996] INFO  28128 [kground-preinit]org.hibernate.validator.internal.util.Version.<clinit>（）@21 : HV000001: Hibernate Validator 8.0.1.Final
+[2026-03-18 17:59:57.060] INFO  28128 [           main]com.tacomall.apima.ApiMaApplication.logStarting（）@50 : Starting ApiMaApplication using Java 17.0.18 with PID 28128 (E:\毕业设计\code\tacomall\server\api\ma\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\ma)
+[2026-03-18 17:59:57.062] INFO  28128 [           main]com.tacomall.apima.ApiMaApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-03-18 17:59:58.356] INFO  28128 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-03-18 17:59:58.358] INFO  28128 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-03-18 17:59:58.401] INFO  28128 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+[2026-03-18 17:59:59.943] INFO  28128 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4002 (http)
+[2026-03-18 17:59:59.959] INFO  28128 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4002"]
+[2026-03-18 17:59:59.962] INFO  28128 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-03-18 17:59:59.963] INFO  28128 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]

@@ -29,7 +29,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper,  Member> implem
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public static final String WX_APPID = "wx0038a1d24bb9eb99";
+    public static final String WX_APPID = "wxf5edcca4710fca78";
 
     public static final String PAGES = "pages/index/index";
 

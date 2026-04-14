@@ -1,113 +1,128 @@
 {
   "pages": [
-    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "首页",
-        "navigationStyle": "custom",
-        "enablePullDownRefresh": true,
-        "app-plus": {
-          "titleNView": false
-        }
+        "navigationStyle": "custom"
       }
     },
     {
       "path": "pages/gallery/index",
       "style": {
-        "navigationBarTitleText": "分类",
-        "navigationStyle": "custom",
-        "enablePullDownRefresh": true,
-        "app-plus": {
-          "titleNView": false
-        }
+        "navigationStyle": "custom"
       }
     },
     {
-      "path": "pages/cart/index",
+      "path": "pages/assistant/index",
       "style": {
-        "navigationBarTitleText": "购物车",
-        "navigationStyle": "custom",
-        "enablePullDownRefresh": true,
-        "enablePullDownRefresh": true,
-        "app-plus": {
-          "titleNView": false
-        }
+        "navigationStyle": "custom"
       }
     },
     {
       "path": "pages/me/index",
       "style": {
-        "navigationBarTitleText": "我的",
-        "navigationStyle": "custom",
-        "enablePullDownRefresh": true,
-        "enablePullDownRefresh": true,
-        "app-plus": {
-          "titleNView": false,
-          "bounce": "none"
-        }
+        "navigationStyle": "custom"
       }
     },
     {
-      "path": "pages/login/index",
+      "path": "pages/checkin/index",
       "style": {
-        "navigationBarTitleText": "登录",
-        "navigationStyle": "custom",
-        "enablePullDownRefresh": true,
-        "app-plus": {
-          "titleNView": false,
-          "bounce": "none"
-        }
+        "navigationBarTitleText": "\u4eca\u65e5\u6253\u5361"
+      }
+    },
+    {
+      "path": "pages/checkin-detail/index",
+      "style": {
+        "navigationBarTitleText": "\u6253\u5361\u8be6\u60c5"
+      }
+    },
+    {
+      "path": "pages/skin-test/index",
+      "style": {
+        "navigationBarTitleText": "\u80a4\u8d28\u5206\u6790"
+      }
+    },
+    {
+      "path": "pages/skin-data/index",
+      "style": {
+        "navigationBarTitleText": "\u76ae\u80a4\u6570\u636e"
+      }
+    },
+    {
+      "path": "pages/cosmetic-add/index",
+      "style": {
+        "navigationBarTitleText": "\u65b0\u589e\u4ea7\u54c1"
+      }
+    },
+    {
+      "path": "pages/account/index",
+      "style": {
+        "navigationBarTitleText": "\u8d26\u53f7\u8be6\u60c5"
+      }
+    },
+    {
+      "path": "pages/user-info/index",
+      "style": {
+        "navigationBarTitleText": "\u6211\u7684\u4fe1\u606f"
+      }
+    },
+    {
+      "path": "pages/settings/index",
+      "style": {
+        "navigationBarTitleText": "\u95f9\u949f\u8bbe\u7f6e"
+      }
+    },
+    {
+      "path": "pages/official/index",
+      "style": {
+        "navigationBarTitleText": "\u516c\u4f17\u53f7"
       }
     }
   ],
   "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#845d32",
-    "borderStyle": "black",
+    "color": "#8e97a8",
+    "selectedColor": "#e685b5",
+    "borderStyle": "white",
     "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",
         "iconPath": "static/image/tab_home.png",
         "selectedIconPath": "static/image/tab_home--active.png",
-        "text": "首页"
+        "text": "\u9996\u9875"
       },
       {
         "pagePath": "pages/gallery/index",
-        "iconPath": "static/image/tab_gallery.png",
-        "selectedIconPath": "static/image/tab_gallery--active.png",
-        "text": "分类"
+        "iconPath": "static/image/\u68b3\u5986\u53f0.png",
+        "selectedIconPath": "static/image/\u68b3\u5986\u53f0.png",
+        "text": "\u68b3\u5986\u53f0"
       },
       {
-        "pagePath": "pages/cart/index",
-        "iconPath": "static/image/tab_cart.png",
-        "selectedIconPath": "static/image/tab_cart--active.png",
-        "text": "购物车"
+        "pagePath": "pages/assistant/index",
+        "iconPath": "static/image/\u52a9\u624b.png",
+        "selectedIconPath": "static/image/\u52a9\u624b.png",
+        "text": "\u667a\u6167\u52a9\u624b"
       },
       {
         "pagePath": "pages/me/index",
         "iconPath": "static/image/tab_me.png",
         "selectedIconPath": "static/image/tab_me--active.png",
-        "text": "个人中心"
+        "text": "\u6211\u7684"
       }
     ]
   },
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "塔可商城",
+    "navigationBarTitleText": "\u667a\u80fd\u9762\u90e8\u62a4\u7406\u52a9\u624b",
     "navigationBarBackgroundColor": "#fff",
-    "backgroundColor": "#F8F8F8",
-    "mp-alipay": {
-      "titleBarColor": "#FFFFFF"
-    },
+    "backgroundColor": "#f7f8fe",
     "usingComponents": {}
   },
   "easycom": {
     "autoscan": true,
     "custom": {
-      "^cut-(.*)": "codingtalk-uni-toolkit/src/components/cut-$1/cut-$1.vue",
       "^u-(.*)": "uview-plus/components/u-$1/u-$1.vue"
     }
   }
 }
+

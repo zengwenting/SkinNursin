@@ -13,7 +13,7 @@
   "dependencies": {
     "@vitejs/plugin-vue": "^4.4.0",
     "ant-design-vue": "^4.0.5",
-    "axios": "^1.5.1",
+    "axios": "^0.27.2",
     "codingtalk-vue-toolkit": "0.1.11",
     "dayjs": "^1.11.10",
     "default-passive-events": "^2.0.0",

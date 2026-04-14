@@ -4,6 +4,7 @@ import _ from "lodash";
 import * as echarts from "echarts";
 import injectComponents from "@/components";
 import entities from "@/entity";
+import { MINI_APP_INFO, MINI_APP_MENU } from "@/constants/miniapp";
 import {
   Input,
   Button,
@@ -28,16 +29,23 @@ import {
 } from "codingtalk-vue-toolkit";
 import { rep } from "@/utils/navigator";
 
-const APP_URL = {
-  dev: "http://localhost:4000/sys/app",
-  test: "",
-  prod: "/open/sys/app",
-};
-
-const ENTITY_URL = {
-  dev: "http://localhost:4000/sys/entity",
-  test: "",
-  prod: "/open/sys/entity",
+const LOCAL_APP_CONFIG = {
+  infoData: MINI_APP_INFO,
+  menu: MINI_APP_MENU,
+  api: {
+    web: {
+      hostname: "http://localhost:4001/",
+      modules: {
+        org: {
+          staffLogin: { path: "org/staffLogin", method: "POST" },
+          staffLogout: { path: "org/staffLogout", method: "POST" },
+          staffInfo: { path: "org/staffInfo", method: "POST" },
+          staffAccessRuleList: { path: "org/staffAccessRuleList", method: "POST" },
+        },
+      },
+    },
+  },
+  entity: {},
 };
 
 export const TOKEN_KEY = "jwt-token";
@@ -62,12 +70,23 @@ export const antDesignInstall = (app) => {
 };
 
 export const codingtalkVueToolkitInstall = async (app) => {
+  const axiosWrapper = (config) => {
+    if (config?.url === "__local_app_config__") {
+      return Promise.resolve({
+        data: {
+          status: true,
+          data: LOCAL_APP_CONFIG,
+        },
+      });
+    }
+    return axios(config);
+  };
   await install(
     app,
     {
       libs: {
         _,
-        axios,
+        axios: axiosWrapper,
         echarts,
       },
       entities,
@@ -87,24 +106,10 @@ export const codingtalkVueToolkitInstall = async (app) => {
       },
       remote: {
         oss: "//api.yun-kuai.com/open/oss/authorize",
-        app: (() => {
-          let url = APP_URL.dev;
-          if (process.env.NODE_ENV === "test") {
-            url = APP_URL.test;
-          } else if (process.env.NODE_ENV === "production") {
-            url = APP_URL.prod;
-          }
-          return url;
-        })(),
-        entity: (() => {
-          let url = ENTITY_URL.dev;
-          if (process.env.NODE_ENV === "test") {
-            url = ENTITY_URL.test;
-          } else if (process.env.NODE_ENV === "production") {
-            url = ENTITY_URL.prod;
-          }
-          return url;
-        })()
+        app: "__local_app_config__",
+        entity: {
+          url: "",
+        }
       }
     }
   );

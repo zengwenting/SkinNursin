@@ -1,19 +1,18 @@
-import { rep } from "codingtalk-uni-toolkit";
-
 function getQueryValue(str, key) {
   const reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)", "i");
-  const r = str.match(reg);
-  return r ? r[2] : null
+  const result = str.match(reg);
+  return result ? result[2] : null;
 }
 
-export default function (opt) {
-  const { query } = opt;
-  setTimeout(() => {
-    const sceneStr = decodeURIComponent(query.scene)
-    const a = getQueryValue(sceneStr, 'a')
-    const b = getQueryValue(sceneStr, 'b')
-    if ((a && b) && a === "invite") {
-      rep(`/pages/login/index?invite=${b}`)
-    }
-  }, 500);
+export default function routerJumper(opt) {
+  const { query = {} } = opt || {};
+  if (!query.scene) {
+    return;
+  }
+  const sceneStr = decodeURIComponent(query.scene);
+  const action = getQueryValue(sceneStr, "a");
+  const inviteCode = getQueryValue(sceneStr, "b");
+  if (action === "invite" && inviteCode) {
+    console.info("Invite scene ignored in skincare assistant mode.", inviteCode);
+  }
 }

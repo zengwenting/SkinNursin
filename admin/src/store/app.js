@@ -1,11 +1,12 @@
 import { defineStore } from "pinia";
-import { localCache, getGlobalVariable } from "codingtalk-vue-toolkit";
+import { localCache } from "codingtalk-vue-toolkit";
 import difference from "lodash/difference";
 import cloneDeep from "lodash/cloneDeep";
 import routesDynamic from "@/router/routes/dynamic";
 import router from "@/router";
 import { TOKEN_KEY } from "@/config";
 import { OrgStaff } from "@/entity";
+import { MINI_APP_INFO, MINI_APP_MENU } from "@/constants/miniapp";
 
 export default defineStore({
   id: "app",
@@ -22,7 +23,7 @@ export default defineStore({
   getters: {},
   actions: {
     init() {
-      this.appInfoData = getGlobalVariable("app")?.infoData;
+      this.appInfoData = MINI_APP_INFO;
       localCache.get(TOKEN_KEY) && this.accessInit();
     },
     setHistory(a) {
@@ -62,7 +63,7 @@ export default defineStore({
     },
     async accessInit() {
       const userInfo = await this.getUserInfo();
-      const { menu: menuJson} = getGlobalVariable('app')
+      const menuJson = MINI_APP_MENU;
       const { isAdmin } = userInfo;
       return new Promise((resolve) => {
         OrgStaff.sendApi("staffAccessRuleList").then((res) => {
