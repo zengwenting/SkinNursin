@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tacomall.apiadmin.entity.Checkin;
@@ -30,6 +31,7 @@ import com.tacomall.apiadmin.vo.mini.MiniCheckinItemVo;
 import com.tacomall.apiadmin.vo.mini.MiniCosmeticItemVo;
 import com.tacomall.apiadmin.vo.mini.MiniDashboardVo;
 import com.tacomall.apiadmin.vo.mini.MiniSkinTestItemVo;
+import com.tacomall.apiadmin.vo.mini.MiniStatItemVo;
 import com.tacomall.apiadmin.vo.mini.MiniUserItemVo;
 import com.tacomall.common.json.ResponseJson;
 import com.tacomall.common.json.ResponsePageJson;
@@ -96,6 +98,9 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
                 .skinTestCount(skinTestMapper.selectCount(new LambdaQueryWrapper<SkinTest>().eq(SkinTest::getIsDelete, 0)))
                 .checkinCount(checkinMapper.selectCount(new LambdaQueryWrapper<Checkin>().eq(Checkin::getIsDelete, 0)))
                 .cosmeticCount(cosmeticItemMapper.selectCount(new LambdaQueryWrapper<CosmeticItem>().eq(CosmeticItem::getIsDelete, 0)))
+                .skinTypeDistribution(buildSkinTypeDistribution())
+                .cosmeticCategoryDistribution(buildCosmeticCategoryDistribution())
+                .recentCheckinTrend(buildRecentCheckinTrend())
                 .recentUsers(recentUsers.stream().map(this::toUserItem).collect(Collectors.toList()))
                 .recentSkinTests(recentSkinTests.stream().map(item -> toSkinTestItem(item, userMap)).collect(Collectors.toList()))
                 .recentCheckins(recentCheckins.stream().map(item -> toCheckinItem(item, userMap)).collect(Collectors.toList()))
@@ -132,6 +137,32 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
     }
 
     @Override
+    public ResponseJson<MiniUserItemVo> userInfo(Integer id) {
+        ResponseJson<MiniUserItemVo> responseJson = new ResponseJson<>();
+        UserProfile item = userProfileMapper.selectById(id);
+        responseJson.setData(item == null ? null : toUserItem(item));
+        responseJson.ok();
+        return responseJson;
+    }
+
+    @Override
+    public ResponseJson<String> userUpdate(Integer id, JSONObject json) {
+        ResponseJson<String> responseJson = new ResponseJson<>();
+        userProfileMapper.update(null, new LambdaUpdateWrapper<UserProfile>()
+                .eq(UserProfile::getId, id)
+                .set(UserProfile::getNickname, json.getString("nickname"))
+                .set(UserProfile::getAccount, json.getString("account"))
+                .set(UserProfile::getAge, json.getInteger("age"))
+                .set(UserProfile::getGender, json.getString("gender"))
+                .set(UserProfile::getSkinType, json.getString("skinType"))
+                .set(UserProfile::getSkinGoal, json.getString("skinGoal"))
+                .set(UserProfile::getBio, json.getString("bio")));
+        responseJson.setData("用户信息更新成功");
+        responseJson.ok();
+        return responseJson;
+    }
+
+    @Override
     public ResponsePageJson<List<MiniSkinTestItemVo>> skinTestPage(Integer pageIndex, Integer pageSize, JSONObject json) {
         ResponsePageJson<List<MiniSkinTestItemVo>> response = new ResponsePageJson<>();
         JSONObject query = json == null ? null : json.getJSONObject("query");
@@ -161,6 +192,34 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
     }
 
     @Override
+    public ResponseJson<MiniSkinTestItemVo> skinTestInfo(Integer id) {
+        ResponseJson<MiniSkinTestItemVo> responseJson = new ResponseJson<>();
+        SkinTest item = skinTestMapper.selectById(id);
+        Map<Integer, UserProfile> userMap = item == null ? Collections.emptyMap() : getUserMap(Set.of(item.getUserId()));
+        responseJson.setData(item == null ? null : toSkinTestItem(item, userMap));
+        responseJson.ok();
+        return responseJson;
+    }
+
+    @Override
+    public ResponseJson<String> skinTestUpdate(Integer id, JSONObject json) {
+        ResponseJson<String> responseJson = new ResponseJson<>();
+        skinTestMapper.update(null, new LambdaUpdateWrapper<SkinTest>()
+                .eq(SkinTest::getId, id)
+                .set(SkinTest::getSkinType, json.getString("skinType"))
+                .set(SkinTest::getHydrationScore, json.getInteger("hydrationScore"))
+                .set(SkinTest::getOilinessScore, json.getInteger("oilinessScore"))
+                .set(SkinTest::getSensitivityScore, json.getInteger("sensitivityScore"))
+                .set(SkinTest::getPoreScore, json.getInteger("poreScore"))
+                .set(SkinTest::getBlackheadScore, json.getInteger("blackheadScore"))
+                .set(SkinTest::getSummary, json.getString("summary"))
+                .set(SkinTest::getAdvice, json.getString("advice")));
+        responseJson.setData("肤质测试记录更新成功");
+        responseJson.ok();
+        return responseJson;
+    }
+
+    @Override
     public ResponsePageJson<List<MiniCheckinItemVo>> checkinPage(Integer pageIndex, Integer pageSize, JSONObject json) {
         ResponsePageJson<List<MiniCheckinItemVo>> response = new ResponsePageJson<>();
         JSONObject query = json == null ? null : json.getJSONObject("query");
@@ -182,6 +241,31 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
         response.buildPage(result.getCurrent(), result.getSize(), result.getTotal());
         response.ok();
         return response;
+    }
+
+    @Override
+    public ResponseJson<MiniCheckinItemVo> checkinInfo(Integer id) {
+        ResponseJson<MiniCheckinItemVo> responseJson = new ResponseJson<>();
+        Checkin item = checkinMapper.selectById(id);
+        Map<Integer, UserProfile> userMap = item == null ? Collections.emptyMap() : getUserMap(Set.of(item.getUserId()));
+        responseJson.setData(item == null ? null : toCheckinItem(item, userMap));
+        responseJson.ok();
+        return responseJson;
+    }
+
+    @Override
+    public ResponseJson<String> checkinUpdate(Integer id, JSONObject json) {
+        ResponseJson<String> responseJson = new ResponseJson<>();
+        checkinMapper.update(null, new LambdaUpdateWrapper<Checkin>()
+                .eq(Checkin::getId, id)
+                .set(Checkin::getSkinStatus, json.getString("skinStatus"))
+                .set(Checkin::getHydrationScore, json.getInteger("hydrationScore"))
+                .set(Checkin::getOilinessScore, json.getInteger("oilinessScore"))
+                .set(Checkin::getSensitivityScore, json.getInteger("sensitivityScore"))
+                .set(Checkin::getNote, json.getString("note")));
+        responseJson.setData("护理打卡记录更新成功");
+        responseJson.ok();
+        return responseJson;
     }
 
     @Override
@@ -211,6 +295,34 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
         response.buildPage(result.getCurrent(), result.getSize(), result.getTotal());
         response.ok();
         return response;
+    }
+
+    @Override
+    public ResponseJson<MiniCosmeticItemVo> cosmeticInfo(Integer id) {
+        ResponseJson<MiniCosmeticItemVo> responseJson = new ResponseJson<>();
+        CosmeticItem item = cosmeticItemMapper.selectById(id);
+        Map<Integer, UserProfile> userMap = item == null ? Collections.emptyMap() : getUserMap(Set.of(item.getUserId()));
+        responseJson.setData(item == null ? null : toCosmeticItem(item, userMap));
+        responseJson.ok();
+        return responseJson;
+    }
+
+    @Override
+    public ResponseJson<String> cosmeticUpdate(Integer id, JSONObject json) {
+        ResponseJson<String> responseJson = new ResponseJson<>();
+        cosmeticItemMapper.update(null, new LambdaUpdateWrapper<CosmeticItem>()
+                .eq(CosmeticItem::getId, id)
+                .set(CosmeticItem::getName, json.getString("name"))
+                .set(CosmeticItem::getBrand, json.getString("brand"))
+                .set(CosmeticItem::getCategory, json.getString("category"))
+                .set(CosmeticItem::getImageUrl, json.getString("imageUrl"))
+                .set(CosmeticItem::getEffectTag, json.getString("effectTag"))
+                .set(CosmeticItem::getIngredient, json.getString("ingredient"))
+                .set(CosmeticItem::getUsePeriod, json.getString("usePeriod"))
+                .set(CosmeticItem::getNote, json.getString("note")));
+        responseJson.setData("化妆台产品更新成功");
+        responseJson.ok();
+        return responseJson;
     }
 
     private Set<Integer> findUserIdsByKeyword(String keyword) {
@@ -312,5 +424,51 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
                 .usageCount(usageCount)
                 .createTime(item.getCreateTime())
                 .build();
+    }
+
+    private List<MiniStatItemVo> buildSkinTypeDistribution() {
+        return userProfileMapper.selectList(new LambdaQueryWrapper<UserProfile>()
+                .eq(UserProfile::getIsDelete, 0))
+                .stream()
+                .collect(Collectors.groupingBy(item -> {
+                    if (item.getSkinType() == null || item.getSkinType().isBlank()) {
+                        return "未填写";
+                    }
+                    return item.getSkinType();
+                }, Collectors.counting()))
+                .entrySet()
+                .stream()
+                .map(item -> MiniStatItemVo.builder().label(item.getKey()).value(item.getValue()).build())
+                .collect(Collectors.toList());
+    }
+
+    private List<MiniStatItemVo> buildCosmeticCategoryDistribution() {
+        return cosmeticItemMapper.selectList(new LambdaQueryWrapper<CosmeticItem>()
+                .eq(CosmeticItem::getIsDelete, 0))
+                .stream()
+                .collect(Collectors.groupingBy(item -> {
+                    if (item.getCategory() == null || item.getCategory().isBlank()) {
+                        return "未分类";
+                    }
+                    return item.getCategory();
+                }, Collectors.counting()))
+                .entrySet()
+                .stream()
+                .map(item -> MiniStatItemVo.builder().label(item.getKey()).value(item.getValue()).build())
+                .collect(Collectors.toList());
+    }
+
+    private List<MiniStatItemVo> buildRecentCheckinTrend() {
+        return checkinMapper.selectList(new LambdaQueryWrapper<Checkin>()
+                .eq(Checkin::getIsDelete, 0)
+                .orderByDesc(Checkin::getCheckinDate)
+                .last("limit 30"))
+                .stream()
+                .collect(Collectors.groupingBy(item -> item.getCheckinDate().format(DATE_FORMATTER), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey())
+                .map(item -> MiniStatItemVo.builder().label(item.getKey()).value(item.getValue()).build())
+                .collect(Collectors.toList());
     }
 }

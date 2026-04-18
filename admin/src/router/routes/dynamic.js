@@ -11,7 +11,7 @@ const dynamic = [
           title: "用户管理",
           requiresAuth: true,
         },
-        component: () => import("@/pages/mini/users.vue"),
+        component: () => import("@/pages/skin-assistant/user-management.vue"),
       },
       {
         name: "miniSkinTests",
@@ -20,7 +20,7 @@ const dynamic = [
           title: "肤质测试",
           requiresAuth: true,
         },
-        component: () => import("@/pages/mini/skin-tests.vue"),
+        component: () => import("@/pages/skin-assistant/skin-test-management.vue"),
       },
       {
         name: "miniCheckins",
@@ -29,7 +29,7 @@ const dynamic = [
           title: "护理打卡",
           requiresAuth: true,
         },
-        component: () => import("@/pages/mini/checkins.vue"),
+        component: () => import("@/pages/skin-assistant/checkin-management.vue"),
       },
       {
         name: "miniCosmetics",
@@ -38,7 +38,7 @@ const dynamic = [
           title: "化妆台产品",
           requiresAuth: true,
         },
-        component: () => import("@/pages/mini/cosmetics.vue"),
+        component: () => import("@/pages/skin-assistant/cosmetic-management.vue"),
       },
     ],
   },

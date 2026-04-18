@@ -81,6 +81,13 @@ export const codingtalkVueToolkitInstall = async (app) => {
     }
     return axios(config);
   };
+  axiosWrapper.create = (...args) => axios.create(...args);
+  axiosWrapper.CancelToken = axios.CancelToken;
+  axiosWrapper.isCancel = axios.isCancel;
+  axiosWrapper.all = axios.all?.bind(axios);
+  axiosWrapper.spread = axios.spread?.bind(axios);
+  axiosWrapper.defaults = axios.defaults;
+  axiosWrapper.interceptors = axios.interceptors;
   await install(
     app,
     {

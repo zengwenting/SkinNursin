@@ -16,9 +16,25 @@ public interface MiniappAdminService {
 
     ResponsePageJson<List<MiniUserItemVo>> userPage(Integer pageIndex, Integer pageSize, JSONObject json);
 
+    ResponseJson<MiniUserItemVo> userInfo(Integer id);
+
+    ResponseJson<String> userUpdate(Integer id, JSONObject json);
+
     ResponsePageJson<List<MiniSkinTestItemVo>> skinTestPage(Integer pageIndex, Integer pageSize, JSONObject json);
+
+    ResponseJson<MiniSkinTestItemVo> skinTestInfo(Integer id);
+
+    ResponseJson<String> skinTestUpdate(Integer id, JSONObject json);
 
     ResponsePageJson<List<MiniCheckinItemVo>> checkinPage(Integer pageIndex, Integer pageSize, JSONObject json);
 
+    ResponseJson<MiniCheckinItemVo> checkinInfo(Integer id);
+
+    ResponseJson<String> checkinUpdate(Integer id, JSONObject json);
+
     ResponsePageJson<List<MiniCosmeticItemVo>> cosmeticPage(Integer pageIndex, Integer pageSize, JSONObject json);
+
+    ResponseJson<MiniCosmeticItemVo> cosmeticInfo(Integer id);
+
+    ResponseJson<String> cosmeticUpdate(Integer id, JSONObject json);
 }
