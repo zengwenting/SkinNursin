@@ -15,7 +15,7 @@ import com.tacomall.apiadmin.vo.mini.MiniCheckinItemVo;
 import com.tacomall.common.json.ResponseJson;
 import com.tacomall.common.json.ResponsePageJson;
 
-// 护理打卡模块：负责打卡记录分页、详情和后台修订。
+// 护理打卡模块：负责打卡记录分页、详情和后台编辑
 @RestController
 @RequestMapping("/skin-assistant/checkins/")
 public class SkinAssistantCheckinController {

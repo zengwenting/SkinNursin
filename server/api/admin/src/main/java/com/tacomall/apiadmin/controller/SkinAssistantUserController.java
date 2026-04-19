@@ -15,7 +15,7 @@ import com.tacomall.apiadmin.vo.mini.MiniUserItemVo;
 import com.tacomall.common.json.ResponseJson;
 import com.tacomall.common.json.ResponsePageJson;
 
-// 用户管理模块：负责用户分页、详情和编辑能力。
+// 用户管理模块：负责用户分页、详情和编辑能力
 @RestController
 @RequestMapping("/skin-assistant/users/")
 public class SkinAssistantUserController {

@@ -1,3 +1,4 @@
+// 皮肤护理小助手后台动态路由配置
 const dynamic = [
   {
     name: "layoutAuthDynamic",
@@ -17,7 +18,7 @@ const dynamic = [
         name: "miniSkinTests",
         path: "/mini/skin-tests",
         meta: {
-          title: "肤质测试",
+          title: "肤质测试管理",
           requiresAuth: true,
         },
         component: () => import("@/pages/skin-assistant/skin-test-management.vue"),
@@ -26,7 +27,7 @@ const dynamic = [
         name: "miniCheckins",
         path: "/mini/checkins",
         meta: {
-          title: "护理打卡",
+          title: "护理打卡管理",
           requiresAuth: true,
         },
         component: () => import("@/pages/skin-assistant/checkin-management.vue"),
@@ -35,7 +36,7 @@ const dynamic = [
         name: "miniCosmetics",
         path: "/mini/cosmetics",
         meta: {
-          title: "化妆台产品",
+          title: "化妆台产品管理",
           requiresAuth: true,
         },
         component: () => import("@/pages/skin-assistant/cosmetic-management.vue"),

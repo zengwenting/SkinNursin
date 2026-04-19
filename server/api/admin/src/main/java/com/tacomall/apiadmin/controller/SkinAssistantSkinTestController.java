@@ -15,7 +15,7 @@ import com.tacomall.apiadmin.vo.mini.MiniSkinTestItemVo;
 import com.tacomall.common.json.ResponseJson;
 import com.tacomall.common.json.ResponsePageJson;
 
-// 肤质测试模块：负责测试记录分页、详情和后台修订。
+// 肤质测试模块：负责测试记录分页、详情和后台编辑
 @RestController
 @RequestMapping("/skin-assistant/skin-tests/")
 public class SkinAssistantSkinTestController {

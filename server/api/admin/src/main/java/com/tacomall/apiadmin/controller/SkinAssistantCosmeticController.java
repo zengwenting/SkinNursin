@@ -15,7 +15,7 @@ import com.tacomall.apiadmin.vo.mini.MiniCosmeticItemVo;
 import com.tacomall.common.json.ResponseJson;
 import com.tacomall.common.json.ResponsePageJson;
 
-// 化妆台产品模块：负责产品分页、详情和编辑能力。
+// 化妆台产品模块：负责产品分页、详情和编辑能力
 @RestController
 @RequestMapping("/skin-assistant/cosmetics/")
 public class SkinAssistantCosmeticController {

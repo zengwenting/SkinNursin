@@ -1,3 +1,4 @@
+// 后台管理系统基础路由配置
 export const routesInit = [
   {
     name: "/",
@@ -56,7 +57,7 @@ export const routesInit = [
         name: "accountSetting",
         path: "/account/setting",
         meta: {
-          title: "账户安全",
+          title: "账号安全",
           requiresAuth: true,
         },
         component: () => import("@/pages/account/setting/index.vue"),

@@ -1,36 +1,34 @@
-import { fileURLToPath, URL } from 'url'
-import path from 'path' // 1. 新增這一行
+import { fileURLToPath, URL } from "url";
+import path from "path";
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import topLevelAwait from 'vite-plugin-top-level-await'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import topLevelAwait from "vite-plugin-top-level-await";
 import postcsspxtoviewport8plugin from "postcss-px-to-viewport-8-plugin";
 
-// https://vitejs.dev/config/
+// Web 管理后台的 Vite 配置
 export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
     topLevelAwait({
-      promiseExportName: '__tla',
-      promiseImportName: i => `__tla_${i}`
-    })
+      promiseExportName: "__tla",
+      promiseImportName: (i) => `__tla_${i}`,
+    }),
   ],
   server: {
-    host: '0.0.0.0',
+    host: "0.0.0.0",
     port: 3050,
-    open: false
+    open: false,
   },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      // 2. 新增這一段代碼，強制指定 axios 的路徑
-      'axios': path.resolve(__dirname, 'node_modules/axios')
-    }
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      axios: path.resolve(__dirname, "node_modules/axios"),
+    },
   },
   css: {
-    // ... 後面的代碼保持不變 ...
     preprocessorOptions: {
       less: {
         charset: false,
@@ -66,4 +64,4 @@ export default defineConfig({
       ],
     },
   },
-})
+});

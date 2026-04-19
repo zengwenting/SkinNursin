@@ -1,10 +1,12 @@
+// 皮肤护理小助手后台基础信息与菜单配置
 export const MINI_APP_INFO = {
-  name: "肌肤护理小助手",
+  name: "皮肤护理小助手后台管理系统",
   nameEN: "SkinCare Admin",
   subTitle: "后台管理系统",
-  briefs: "围绕小程序的用户档案、肤质测试、每日打卡与化妆台产品进行统一管理。",
+  briefs: "围绕微信小程序的用户档案、肤质测试、护理打卡与化妆台产品进行统一管理。",
 };
 
+// 皮肤护理小助手后台左侧导航菜单
 export const MINI_APP_MENU = [
   {
     title: "工作台",
@@ -17,17 +19,17 @@ export const MINI_APP_MENU = [
     icon: "用户",
   },
   {
-    title: "肤质测试",
+    title: "肤质测试管理",
     path: "/mini/skin-tests",
     icon: "测试",
   },
   {
-    title: "护理打卡",
+    title: "护理打卡管理",
     path: "/mini/checkins",
     icon: "打卡",
   },
   {
-    title: "化妆台产品",
+    title: "化妆台产品管理",
     path: "/mini/cosmetics",
     icon: "产品",
   },

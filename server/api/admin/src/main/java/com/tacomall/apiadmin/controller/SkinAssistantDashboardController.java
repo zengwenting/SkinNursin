@@ -9,7 +9,7 @@ import com.tacomall.apiadmin.service.MiniappAdminService;
 import com.tacomall.apiadmin.vo.mini.MiniDashboardVo;
 import com.tacomall.common.json.ResponseJson;
 
-// 皮肤护理后台首页模块：负责返回总览统计和图表数据。
+// 后台首页模块：负责返回总览统计和图表数据
 @RestController
 @RequestMapping("/skin-assistant/dashboard/")
 public class SkinAssistantDashboardController {

@@ -7,7 +7,7 @@ const BASE_URL =
     ? "/skin-assistant/"
     : "http://localhost:4001/skin-assistant/";
 
-// 皮肤护理后台接口模块：统一封装后台管理系统业务接口。
+// 皮肤护理后台接口模块：统一封装用户、肤质测试、打卡和化妆台管理接口
 async function request(path, body = {}, params = {}) {
   const token = localCache.get(TOKEN_KEY);
   const response = await axios.post(`${BASE_URL}${path}`, body, {

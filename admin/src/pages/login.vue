@@ -17,7 +17,7 @@
       <div class="panel_form">
         <div class="form_header">
           <h3>登录后台</h3>
-          <p>使用现有管理账号进入系统</p>
+          <p>使用现有管理员账号进入系统</p>
         </div>
         <div class="form_body">
           <a-input v-model:value="formLogin.username" placeholder="账号" />
@@ -36,7 +36,6 @@
 </template>
 
 <script setup>
-// 登录模块：负责后台管理员登录并写入本地登录态。
 import { reactive } from "vue";
 import { storeToRefs } from "pinia";
 import { message } from "ant-design-vue";
@@ -46,6 +45,7 @@ import { TOKEN_KEY } from "@/config";
 import { OrgStaff } from "@/entity";
 import useAppStore from "@/store/app";
 
+// 登录模块：负责管理员登录并写入本地登录态
 const appStore = useAppStore();
 const { appInfoData } = storeToRefs(appStore);
 
