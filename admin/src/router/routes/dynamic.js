@@ -32,14 +32,15 @@ const dynamic = [
         },
         component: () => import("@/pages/skin-assistant/checkin-management.vue"),
       },
+
       {
-        name: "miniCosmetics",
-        path: "/mini/cosmetics",
+        name: "miniConfig",
+        path: "/mini/config",
         meta: {
-          title: "化妆台产品管理",
+          title: "系统配置",
           requiresAuth: true,
         },
-        component: () => import("@/pages/skin-assistant/cosmetic-management.vue"),
+        component: () => import("@/pages/skin-assistant/system-config.vue"),
       },
     ],
   },

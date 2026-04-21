@@ -34,6 +34,20 @@
         <text v-else class="value">{{ form.age || "-" }}</text>
       </view>
 
+      <view class="info-item">
+        <text class="label">性别</text>
+        <picker
+          v-if="editing"
+          mode="selector"
+          :range="genderOptions"
+          :value="genderIndex"
+          @change="onGenderChange"
+        >
+          <view class="picker-value">{{ form.gender || "请选择" }}</view>
+        </picker>
+        <text v-else class="value">{{ form.gender || "-" }}</text>
+      </view>
+
       <view class="info-item vertical-item">
         <text class="label">是否敏感肌</text>
         <radio-group class="radio-group" @change="onSensitiveChange">
@@ -71,6 +85,18 @@
           </label>
         </checkbox-group>
       </view>
+
+      <view class="info-item vertical-item">
+        <text class="label">个人简介</text>
+        <textarea
+          v-if="editing"
+          class="textarea-input"
+          v-model="form.bio"
+          placeholder="请输入个人简介"
+          rows="3"
+        />
+        <text v-else class="value">{{ form.bio || "-" }}</text>
+      </view>
     </view>
   </view>
 </template>
@@ -78,6 +104,7 @@
 <script setup>
 import { computed, onMounted, reactive, ref } from "vue";
 import useAppStore from "@/store/app";
+import api from "@/utils/api";
 
 const textSaved = "\u5df2\u4fdd\u5b58";
 
@@ -91,6 +118,10 @@ const skinTypeOptions = [
   "\u6df7\u6cb9",
   "\u6df7\u5e72",
 ];
+const genderOptions = [
+  "\u7537",
+  "\u5973"
+];
 const goalOptions = [
   "\u7ef4\u7a33",
   "\u7f8e\u767d",
@@ -101,18 +132,22 @@ const goalOptions = [
 const form = reactive({
   skinType: "",
   age: "",
-  isSensitive: "",
+  gender: "",
+  isSensitive: false,
   sensitiveSources: [],
   goals: [],
+  bio: "",
 });
 
 const syncFromStore = () => {
   const profileInfo = appStore.profileInfo || {};
   form.skinType = profileInfo.skinType || "";
   form.age = profileInfo.age || "";
-  form.isSensitive = typeof profileInfo.isSensitive === "boolean" ? profileInfo.isSensitive : "";
+  form.gender = profileInfo.gender || "";
+  form.isSensitive = typeof profileInfo.isSensitive === "boolean" ? profileInfo.isSensitive : false;
   form.sensitiveSources = Array.isArray(profileInfo.sensitiveSources) ? [...profileInfo.sensitiveSources] : [];
   form.goals = Array.isArray(profileInfo.goals) ? [...profileInfo.goals] : [];
+  form.bio = profileInfo.bio || "";
 };
 
 const skinTypeIndex = computed(() => {
@@ -120,10 +155,21 @@ const skinTypeIndex = computed(() => {
   return idx >= 0 ? idx : 0;
 });
 
+const genderIndex = computed(() => {
+  const idx = genderOptions.findIndex((item) => item === form.gender);
+  return idx >= 0 ? idx : 0;
+});
+
 const onSkinTypeChange = (e) => {
   if (!editing.value) return;
   const index = Number(e.detail.value);
   form.skinType = skinTypeOptions[index] || "";
+};
+
+const onGenderChange = (e) => {
+  if (!editing.value) return;
+  const index = Number(e.detail.value);
+  form.gender = genderOptions[index] || "";
 };
 
 const onSensitiveChange = (e) => {
@@ -155,16 +201,32 @@ const onGoalChange = (e) => {
   form.goals = Array.isArray(e.detail.value) ? e.detail.value : [];
 };
 
-const toggleEdit = () => {
+const toggleEdit = async () => {
   if (editing.value) {
-    appStore.updateProfileInfo({
-      skinType: form.skinType,
-      age: form.age,
-      isSensitive: form.isSensitive,
-      sensitiveSources: form.isSensitive ? form.sensitiveSources : [],
-      goals: form.goals,
-    });
-    uni.showToast({ title: textSaved, icon: "success" });
+    try {
+      await api.updateUser({
+        skinType: form.skinType,
+        age: parseInt(form.age) || null,
+        gender: form.gender,
+        isSensitive: form.isSensitive,
+        sensitiveSource: form.isSensitive ? form.sensitiveSources.join(", ") : "",
+        skinGoal: form.goals.join(", "),
+        bio: form.bio,
+      });
+      appStore.updateProfileInfo({
+        skinType: form.skinType,
+        age: form.age,
+        gender: form.gender,
+        isSensitive: form.isSensitive,
+        sensitiveSources: form.sensitiveSources,
+        goals: form.goals,
+        bio: form.bio,
+      });
+      uni.showToast({ title: textSaved, icon: "success" });
+    } catch (error) {
+      uni.showToast({ title: "保存失败，请重试", icon: "none" });
+      console.error("保存用户信息失败:", error);
+    }
   }
   editing.value = !editing.value;
 };
@@ -238,6 +300,19 @@ onMounted(() => {
     box-sizing: border-box;
     color: #2f3749;
     font-size: 28rpx;
+  }
+
+  .textarea-input {
+    width: 100%;
+    min-height: 160rpx;
+    padding: 20rpx;
+    border-radius: 18rpx;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1rpx solid rgba(225, 229, 239, 0.95);
+    box-sizing: border-box;
+    color: #2f3749;
+    font-size: 28rpx;
+    resize: none;
   }
 
   .radio-group,

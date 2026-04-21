@@ -9,9 +9,11 @@ const ALARM_STORAGE_KEY = "ma_alarm_settings";
 const defaultProfileInfo = () => ({
   skinType: "",
   age: "",
-  isSensitive: "",
+  gender: "",
+  isSensitive: false,
   sensitiveSources: [],
   goals: [],
+  bio: "",
 });
 
 const defaultAlarmSettings = () => ({

@@ -29,9 +29,9 @@ export const MINI_APP_MENU = [
     icon: "打卡",
   },
   {
-    title: "化妆台产品管理",
-    path: "/mini/cosmetics",
-    icon: "产品",
+    title: "系统配置",
+    path: "/mini/config",
+    icon: "设置",
   },
   {
     title: "账号中心",

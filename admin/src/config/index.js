@@ -7,12 +7,14 @@ import entities from "@/entity";
 import { MINI_APP_INFO, MINI_APP_MENU } from "@/constants/miniapp";
 import {
   Input,
+  InputNumber,
   Button,
   Radio,
   Menu,
   Dropdown,
   Switch,
   Select,
+  Slider,
   Steps,
   Tag,
   message,
@@ -52,11 +54,13 @@ export const TOKEN_KEY = "jwt-token";
 
 export const antDesignInstall = (app) => {
   app.use(Input);
+  app.use(InputNumber);
   app.use(Button);
   app.use(Radio);
   app.use(Menu);
   app.use(Switch);
   app.use(Select);
+  app.use(Slider);
   app.use(Dropdown);
   app.use(Tag);
   app.use(Tabs);

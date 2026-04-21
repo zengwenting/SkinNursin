@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
 import com.tacomall.apiadmin.vo.mini.MiniCheckinItemVo;
-import com.tacomall.apiadmin.vo.mini.MiniCosmeticItemVo;
 import com.tacomall.apiadmin.vo.mini.MiniDashboardVo;
 import com.tacomall.apiadmin.vo.mini.MiniSkinTestItemVo;
 import com.tacomall.apiadmin.vo.mini.MiniUserItemVo;
@@ -31,10 +30,4 @@ public interface MiniappAdminService {
     ResponseJson<MiniCheckinItemVo> checkinInfo(Integer id);
 
     ResponseJson<String> checkinUpdate(Integer id, JSONObject json);
-
-    ResponsePageJson<List<MiniCosmeticItemVo>> cosmeticPage(Integer pageIndex, Integer pageSize, JSONObject json);
-
-    ResponseJson<MiniCosmeticItemVo> cosmeticInfo(Integer id);
-
-    ResponseJson<String> cosmeticUpdate(Integer id, JSONObject json);
 }

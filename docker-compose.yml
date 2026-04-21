@@ -48,38 +48,38 @@ services:
       - redis
     networks:
       - tacomall_network
-  # admin:
-  #   build: 
-  #     context: ${IMAGES_ROOT}/admin
-  #   environment:
-  #     - SPRING_PROFILE=${SPRING_PROFILE}
-  #   container_name: ${PROJECT_NAME}_admin
-  #   ports:
-  #     - ${PORT_ADMIN}:4001
-  #   volumes:
-  #     - ./admin:/var/www/html
-  #     - ./server:/app
-  #   depends_on:
-  #     - mysql
-  #     - redis
-  #   networks:
-  #     - tacomall_network
-  # ma:
-  #   build: 
-  #     context: ${IMAGES_ROOT}/ma
-  #   environment:
-  #     - SPRING_PROFILE=${SPRING_PROFILE}
-  #   container_name: ${PROJECT_NAME}_ma
-  #   ports:
-  #     - ${PORT_MA}:4002
-  #   volumes:
-  #     - ./ma:/var/www/html
-  #     - ./server:/app
-  #   depends_on:
-  #     - mysql
-  #     - redis
-  #   networks:
-  #     - tacomall_network
+  admin:
+    build: 
+      context: ${IMAGES_ROOT}/admin
+    environment:
+      - SPRING_PROFILE=${SPRING_PROFILE}
+    container_name: ${PROJECT_NAME}_admin
+    ports:
+      - ${PORT_ADMIN}:4001
+    volumes:
+      - ./admin:/var/www/html
+      - ./server:/app
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - tacomall_network
+  ma:
+    build: 
+      context: ${IMAGES_ROOT}/ma
+    environment:
+      - SPRING_PROFILE=${SPRING_PROFILE}
+    container_name: ${PROJECT_NAME}_ma
+    ports:
+      - ${PORT_MA}:4002
+    volumes:
+      - ./ma:/var/www/html
+      - ./server:/app
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - tacomall_network
 networks:
   tacomall_network:
     driver: bridge

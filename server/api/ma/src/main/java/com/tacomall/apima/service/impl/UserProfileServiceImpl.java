@@ -19,23 +19,61 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Override
     public UserProfile info(Integer userId) {
         Integer targetUserId = userId == null ? 1 : userId;
+        // 更新最后登录时间
+        com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper<UserProfile> wrapper = new com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper<UserProfile>()
+                .eq(UserProfile::getId, targetUserId)
+                .set(UserProfile::getLastLoginTime, java.time.LocalDateTime.now());
+        userProfileMapper.update(null, wrapper);
         return userProfileMapper.selectById(targetUserId);
     }
 
     @Override
     public UserProfile update(ApiUserUpdateRequest request) {
         Integer targetUserId = request.getId() == null ? 1 : request.getId();
-        userProfileMapper.update(null, new UpdateWrapper<UserProfile>().lambda()
-                .eq(UserProfile::getId, targetUserId)
-                .set(UserProfile::getNickname, request.getNickname())
-                .set(UserProfile::getAvatar, request.getAvatar())
-                .set(UserProfile::getAccount, request.getAccount())
-                .set(UserProfile::getPassword, request.getPassword())
-                .set(UserProfile::getAge, request.getAge())
-                .set(UserProfile::getGender, request.getGender())
-                .set(UserProfile::getSkinType, request.getSkinType())
-                .set(UserProfile::getSkinGoal, request.getSkinGoal())
-                .set(UserProfile::getBio, request.getBio()));
+        com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper<UserProfile> wrapper = new com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper<UserProfile>()
+                .eq(UserProfile::getId, targetUserId);
+        
+        if (request.getNickname() != null) {
+            wrapper.set(UserProfile::getNickname, request.getNickname());
+        }
+        if (request.getAvatar() != null) {
+            wrapper.set(UserProfile::getAvatar, request.getAvatar());
+        }
+        if (request.getAccount() != null) {
+            wrapper.set(UserProfile::getAccount, request.getAccount());
+        }
+        if (request.getPassword() != null) {
+            wrapper.set(UserProfile::getPassword, request.getPassword());
+        }
+        if (request.getAge() != null) {
+            wrapper.set(UserProfile::getAge, request.getAge());
+        }
+        if (request.getGender() != null) {
+            wrapper.set(UserProfile::getGender, request.getGender());
+        }
+        if (request.getSkinType() != null) {
+            wrapper.set(UserProfile::getSkinType, request.getSkinType());
+        }
+        if (request.getSkinGoal() != null) {
+            wrapper.set(UserProfile::getSkinGoal, request.getSkinGoal());
+        }
+        if (request.getIsSensitive() != null) {
+            wrapper.set(UserProfile::getIsSensitive, request.getIsSensitive());
+        }
+        if (request.getSensitiveSource() != null) {
+            wrapper.set(UserProfile::getSensitiveSource, request.getSensitiveSource());
+        }
+        if (request.getBio() != null) {
+            wrapper.set(UserProfile::getBio, request.getBio());
+        }
+        if (request.getStatus() != null) {
+            wrapper.set(UserProfile::getStatus, request.getStatus());
+        }
+        if (request.getLastLoginTime() != null) {
+            wrapper.set(UserProfile::getLastLoginTime, request.getLastLoginTime());
+        }
+        
+        userProfileMapper.update(null, wrapper);
         return userProfileMapper.selectById(targetUserId);
     }
 }

@@ -39,7 +39,15 @@ public class UserProfile {
 
     private String skinGoal;
 
+    private Boolean isSensitive;
+
+    private String sensitiveSource;
+
     private String bio;
+
+    private Integer status;
+
+    private LocalDateTime lastLoginTime;
 
     @TableField(fill = FieldFill.INSERT)
     private Integer isDelete;

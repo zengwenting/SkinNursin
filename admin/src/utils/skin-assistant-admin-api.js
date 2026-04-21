@@ -52,13 +52,11 @@ export const skinAssistantAdminApi = {
   updateCheckin(id, form) {
     return request("checkins/update", form, { id });
   },
-  getCosmeticPage(query, pageIndex = 1, pageSize = 10) {
-    return request("cosmetics/page", { query }, { pageIndex, pageSize });
+
+  getConfigList() {
+    return request("config/list");
   },
-  getCosmeticInfo(id) {
-    return request("cosmetics/info", {}, { id });
-  },
-  updateCosmetic(id, form) {
-    return request("cosmetics/update", form, { id });
+  updateConfig(form) {
+    return request("config/update", form);
   },
 };

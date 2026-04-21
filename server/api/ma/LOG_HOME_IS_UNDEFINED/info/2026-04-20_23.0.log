@@ -1,0 +1,30 @@
+[2026-04-20 23:17:04.121] INFO  17532 [kground-preinit]org.hibernate.validator.internal.util.Version.<clinit>（）@21 : HV000001: Hibernate Validator 8.0.1.Final
+[2026-04-20 23:17:04.181] INFO  17532 [           main]com.tacomall.apima.ApiMaApplication.logStarting（）@50 : Starting ApiMaApplication using Java 17.0.18 with PID 17532 (E:\毕业设计\code\tacomall\server\api\ma\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\ma)
+[2026-04-20 23:17:04.182] INFO  17532 [           main]com.tacomall.apima.ApiMaApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-20 23:17:05.233] INFO  17532 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-20 23:17:05.239] INFO  17532 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-20 23:17:05.272] INFO  17532 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+[2026-04-20 23:17:06.543] INFO  17532 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4002 (http)
+[2026-04-20 23:17:06.557] INFO  17532 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4002"]
+[2026-04-20 23:17:06.562] INFO  17532 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-20 23:17:06.563] INFO  17532 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-20 23:17:06.775] INFO  17532 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-20 23:17:06.776] INFO  17532 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 2525 ms
+[2026-04-20 23:17:06.946] INFO  17532 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-20 23:17:07.127] INFO  17532 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@5df64b2a
+[2026-04-20 23:17:07.129] INFO  17532 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-20 23:17:07.130] INFO  17532 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-20 23:17:07.130] INFO  17532 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-20 23:17:07.996] INFO  17532 [           main]com.tacomall.common.config.RedisConfig.logRedisConnectionMode（）@55 : Redis connection settings prepared. address=127.0.0.1:10010, authMode=password-only
+[2026-04-20 23:17:08.407] INFO  17532 [           main]com.tacomall.common.config.WxMaConfiguration.init（）@98 : ? 微信小程序服務初始化成功！共加載 1 個配置。
+[2026-04-20 23:17:08.713] INFO  17532 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@73 : Redis is configured with password-only authentication.
+[2026-04-20 23:17:08.714] INFO  17532 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@80 : JedisPool injected successfully
+[2026-04-20 23:17:08.714] INFO  17532 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@81 : redis address: 127.0.0.1:10010
+[2026-04-20 23:17:09.030] INFO  17532 [           main]com.tacomall.common.config.WxPayConfiguration.wxService（）@32 : ?? 檢測到微信支付配置初始化，正在使用開發者硬編碼模式...
+[2026-04-20 23:17:09.177] INFO  17532 [           main]com.tacomall.common.config.WxPayConfiguration.wxService（）@57 : ? 微信支付服務 (WxPayService) 初始化成功！(硬編碼模式)
+[2026-04-20 23:17:10.093] INFO  17532 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4002"]
+[2026-04-20 23:17:10.135] INFO  17532 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.start（）@221 : Tomcat started on port 4002 (http) with context path ''
+[2026-04-20 23:17:10.169] INFO  17532 [           main]com.tacomall.apima.ApiMaApplication.logStarted（）@56 : Started ApiMaApplication in 6.69 seconds (process running for 7.285)
+[2026-04-20 23:17:53.320] INFO  17532 [nio-4002-exec-4]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2026-04-20 23:17:53.320] INFO  17532 [nio-4002-exec-4]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@532 : Initializing Servlet 'dispatcherServlet'
+[2026-04-20 23:17:53.324] INFO  17532 [nio-4002-exec-4]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@554 : Completed initialization in 4 ms

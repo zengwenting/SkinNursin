@@ -23,5 +23,13 @@ public class ApiUserUpdateRequest {
 
     private String skinGoal;
 
+    private Boolean isSensitive;
+
+    private String sensitiveSource;
+
     private String bio;
+
+    private Integer status;
+
+    private java.time.LocalDateTime lastLoginTime;
 }

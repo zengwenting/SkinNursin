@@ -19,10 +19,13 @@ public class MiniUserItemVo {
     private String gender;
     private String skinType;
     private String skinGoal;
+    private Boolean isSensitive;
+    private String sensitiveSource;
     private String bio;
+    private Integer status;
+    private LocalDateTime lastLoginTime;
     private Long skinTestCount;
     private Long checkinCount;
-    private Long cosmeticCount;
     private String lastSkinTestDate;
     private String lastCheckinDate;
     private LocalDateTime createTime;

@@ -18,8 +18,11 @@
             <tr>
               <th>ID</th>
               <th>用户</th>
-              <th>肤质 / 目标</th>
-              <th>记录数</th>
+              <th>测试次数</th>
+              <th>打卡次数</th>
+              <th>上次登录</th>
+              <th>注册时间</th>
+              <th>状态</th>
               <th>操作</th>
             </tr>
           </thead>
@@ -30,16 +33,21 @@
                 <strong>{{ item.nickname || "-" }}</strong>
                 <p>{{ item.account || "-" }}</p>
               </td>
-              <td>
-                <strong>{{ item.skinType || "-" }}</strong>
-                <p>{{ item.skinGoal || "未填写目标" }}</p>
-              </td>
-              <td>
-                <p>测试 {{ item.skinTestCount || 0 }}</p>
-                <p>打卡 {{ item.checkinCount || 0 }}</p>
-              </td>
+              <td>{{ item.skinTestCount || 0 }}</td>
+              <td>{{ item.checkinCount || 0 }}</td>
+              <td>{{ item.lastLoginTime || "-" }}</td>
+              <td>{{ item.createTime || "-" }}</td>
+              <td>{{ item.status === 1 ? "正常" : "禁用" }}</td>
               <td>
                 <a-button size="small" @click="openDetail(item.id)">查看详情</a-button>
+                <a-button 
+                  size="small" 
+                  :type="item.status === 1 ? 'default' : 'primary'"
+                  style="margin-left: 8px"
+                  @click="toggleStatus(item)"
+                >
+                  {{ item.status === 1 ? "禁用" : "启用" }}
+                </a-button>
               </td>
             </tr>
           </tbody>
@@ -91,7 +99,7 @@
 <script setup>
 // 用户管理模块：展示用户列表，并支持查看详情和编辑保存。
 import { onMounted, reactive, ref } from "vue";
-import { message } from "ant-design-vue";
+import { message, Modal } from "ant-design-vue";
 import { skinAssistantAdminApi } from "@/utils/skin-assistant-admin-api";
 
 const query = reactive({ keyword: "" });
@@ -128,6 +136,25 @@ async function saveDetail() {
     loadData();
     openDetail(detail.id);
   }
+}
+
+async function toggleStatus(item) {
+  const newStatus = item.status === 1 ? 0 : 1;
+  const actionText = newStatus === 1 ? "启用" : "禁用";
+  
+  Modal.confirm({
+    title: `确认${actionText}用户？`,
+    content: `确定要${actionText}用户 ${item.nickname} 吗？`,
+    onOk: async () => {
+      const res = await skinAssistantAdminApi.updateUser(item.id, {
+        status: newStatus
+      });
+      if (res?.status) {
+        message.success(`${actionText}成功`);
+        loadData();
+      }
+    }
+  });
 }
 
 function search() {
@@ -179,13 +206,13 @@ onMounted(loadData);
   }
 
   .table_wrapper {
-    overflow: auto;
+    overflow-x: auto;
     border: 1px solid #f0e4e8;
     border-radius: 22px;
   }
 
   table {
-    width: 100%;
+    min-width: 1000px;
     border-collapse: collapse;
     background: white;
   }
