@@ -46,11 +46,6 @@ const toggleProduct = (id) => {
 
 const submitCheckin = async () => {
   await api.createCheckin({
-    skinStatus: "stable",
-    hydrationScore: 86,
-    oilinessScore: 42,
-    sensitivityScore: 25,
-    note: "完成了今日温和护理与补水修护。",
     cosmeticIds: selectedIds.value,
   });
   await appStore.refreshTodayCheckin();

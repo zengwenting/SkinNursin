@@ -89,13 +89,90 @@
   }
 
   .detail_form input,
-  .detail_form textarea {
+  .detail_form textarea,
+  .detail_form .readonly_value {
     width: 100%;
     padding: 12px 14px;
     border: 1px solid #eddde2;
     border-radius: 14px;
     outline: none;
     background: #fffafb;
+    color: #5a4d54;
+  }
+
+  .detail_form .readonly_value {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+  }
+
+  .detail_form label.full .readonly_value {
+    min-height: 80px;
+    align-items: flex-start;
+    white-space: pre-wrap;
+  }
+
+  .detail_section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eddde2;
+  }
+
+  .detail_section h4 {
+    margin: 0 0 15px 0;
+    color: #5a4d54;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .cosmetic_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+  }
+
+  .cosmetic_item {
+    padding: 15px;
+    border: 1px solid #eddde2;
+    border-radius: 14px;
+    background: #fffafb;
+  }
+
+  .cosmetic_info {
+    .cosmetic_name {
+      font-weight: 600;
+      color: #273043;
+      margin-bottom: 5px;
+    }
+
+    .cosmetic_brand {
+      font-size: 14px;
+      color: #81889b;
+      margin-bottom: 3px;
+    }
+
+    .cosmetic_category {
+      font-size: 13px;
+      color: #c9839c;
+    }
+  }
+
+  .empty_state {
+    text-align: center;
+    padding: 40px 20px;
+    background: #fffafb;
+    border: 1px dashed #eddde2;
+    border-radius: 14px;
+
+    .empty_icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .empty_text {
+      color: #81889b;
+      font-size: 16px;
+    }
   }
 
   .empty_panel {

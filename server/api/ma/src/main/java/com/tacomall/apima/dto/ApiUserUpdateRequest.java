@@ -1,5 +1,6 @@
 package com.tacomall.apima.dto;
 
+import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
@@ -13,13 +14,13 @@ public class ApiUserUpdateRequest {
 
     private String account;
 
-    private String password;
+
 
     private Integer age;
 
     private String gender;
 
-    private String skinType;
+   private String skinType;
 
     private String skinGoal;
 
@@ -27,9 +28,12 @@ public class ApiUserUpdateRequest {
 
     private String sensitiveSource;
 
-    private String bio;
-
     private Integer status;
 
-    private java.time.LocalDateTime lastLoginTime;
-}
+    private LocalDateTime lastLoginTime;
+
+    private String openid;
+
+    private String remindtime;
+
+    private Boolean onclock;}

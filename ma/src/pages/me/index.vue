@@ -6,7 +6,20 @@
       <text class="title title-placeholder">我的</text>
     </view>
 
-    <view class="glass-card profile-card" @click="handleProfileClick">
+    <!-- 微信授权登录区域 -->
+    <button 
+      v-if="!isLoggedIn" 
+      class="glass-card profile-card" 
+      open-type="chooseAvatar" 
+      @chooseavatar="onChooseAvatar"
+    >
+      <image class="avatar" :src="displayAvatar" mode="aspectFill" />
+      <view class="profile-meta">
+        <text class="nickname">{{ displayNickname }}</text>
+        <text class="account">{{ accountHint }}</text>
+      </view>
+    </button>
+    <view v-else class="glass-card profile-card" @click="handleProfileClick">
       <image class="avatar" :src="displayAvatar" mode="aspectFill" />
       <view class="profile-meta">
         <text class="nickname">{{ displayNickname }}</text>
@@ -40,6 +53,7 @@ import { computed, onMounted, ref } from "vue";
 import { onShow } from "@dcloudio/uni-app";
 import useAppStore from "@/store/app";
 import { STATIC_PATH } from "@/config";
+import api from "@/utils/api";
 
 const appStore = useAppStore();
 const authProfile = computed(() => appStore.authProfile);
@@ -94,15 +108,59 @@ const goMyInfo = () => uni.navigateTo({ url: "/pages/user-info/index" });
 const goSettings = () => uni.navigateTo({ url: "/pages/settings/index" });
 const goOfficial = () => uni.navigateTo({ url: "/pages/official/index" });
 
+// 处理头像点击事件（已登录状态）
 const handleProfileClick = async () => {
   if (isLoggedIn.value) {
-    uni.showToast({ title: textAlreadyLogged, icon: "none" });
+    // 跳转到账户详情页面
+    uni.navigateTo({ url: "/pages/account/index" });
     return;
   }
+};
+
+// 处理微信头像选择事件
+const onChooseAvatar = async (e) => {
   try {
-    await loginWithWechat();
+    // 获取用户选择的头像信息
+    const avatarUrl = e.detail.avatarUrl;
+    
+    // 调用微信登录获取 code
+    const loginRes = await new Promise((resolve, reject) => {
+      uni.login({
+        success: resolve,
+        fail: reject
+      });
+    });
+    
+    if (!loginRes.code) {
+      throw new Error('获取微信登录码失败');
+    }
+    
+    // 模拟获取用户昵称（实际项目中可能需要用户输入）
+    const nickname = '微信用户';
+    
+    // 模拟 openid（实际项目中应该由后端通过 code 换取）
+    const openid = 'mock_openid_' + Date.now();
+    
+    // 调用登录接口
+    const loginApiRes = await api.login({
+      code: loginRes.code,
+      nickname: nickname,
+      avatar: avatarUrl,
+      openid: openid
+    });
+    
+    // 更新用户信息
+    appStore.setAuthProfile({
+      avatar: loginApiRes.avatar,
+      nickname: loginApiRes.nickname
+    });
+    
+    // 模拟存储 token
+    appStore.setToken('mock_token_' + Date.now());
+    
     uni.showToast({ title: textLoginSuccess, icon: "success" });
   } catch (err) {
+    console.error('登录失败:', err);
     uni.showToast({ title: textLoginCancel, icon: "none" });
   }
 };
@@ -140,6 +198,23 @@ onShow(() => {
     padding: 30rpx;
     margin-top: 10px;
     margin-bottom: 24rpx;
+  }
+
+  /* 微信授权登录按钮样式 */
+  button.profile-card {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 24rpx;
+    padding: 30rpx;
+  }
+
+  button.profile-card::after {
+    border: none;
   }
 
   .avatar {

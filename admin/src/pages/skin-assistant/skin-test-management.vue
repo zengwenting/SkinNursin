@@ -39,17 +39,16 @@
     <section class="detail_card">
       <div class="detail_head">
         <h3>测试详情</h3>
-        <a-button v-if="detail.id" type="primary" @click="saveDetail">保存修改</a-button>
       </div>
       <div v-if="detail.id" class="detail_form">
-        <label><span>肤质</span><input v-model="detail.skinType" /></label>
-        <label><span>补水评分</span><input v-model="detail.hydrationScore" type="number" /></label>
-        <label><span>出油评分</span><input v-model="detail.oilinessScore" type="number" /></label>
-        <label><span>敏感评分</span><input v-model="detail.sensitivityScore" type="number" /></label>
-        <label><span>毛孔评分</span><input v-model="detail.poreScore" type="number" /></label>
-        <label><span>黑头评分</span><input v-model="detail.blackheadScore" type="number" /></label>
-        <label class="full"><span>总结</span><textarea v-model="detail.summary" rows="4"></textarea></label>
-        <label class="full"><span>建议</span><textarea v-model="detail.advice" rows="4"></textarea></label>
+        <label><span>肤质</span><div class="readonly_value">{{ detail.skinType || "-" }}</div></label>
+        <label><span>补水评分</span><div class="readonly_value">{{ detail.hydrationScore || "-" }}</div></label>
+        <label><span>出油评分</span><div class="readonly_value">{{ detail.oilinessScore || "-" }}</div></label>
+        <label><span>敏感评分</span><div class="readonly_value">{{ detail.sensitivityScore || "-" }}</div></label>
+        <label><span>毛孔评分</span><div class="readonly_value">{{ detail.poreScore || "-" }}</div></label>
+        <label><span>黑头评分</span><div class="readonly_value">{{ detail.blackheadScore || "-" }}</div></label>
+        <label class="full"><span>总结</span><div class="readonly_value">{{ detail.summary || "-" }}</div></label>
+        <label class="full"><span>建议</span><div class="readonly_value">{{ detail.advice || "-" }}</div></label>
       </div>
       <div v-else class="empty_panel">请选择左侧测试记录查看详情</div>
     </section>

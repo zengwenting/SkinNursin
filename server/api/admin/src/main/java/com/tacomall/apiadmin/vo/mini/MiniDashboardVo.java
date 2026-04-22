@@ -15,8 +15,11 @@ public class MiniDashboardVo {
     private Long userCount;
     private Long skinTestCount;
     private Long checkinCount;
+    private Long activeUserCount;
     private List<MiniStatItemVo> skinTypeDistribution;
+    private List<MiniStatItemVo> sensitiveSkinDistribution;
     private List<MiniStatItemVo> recentCheckinTrend;
+    private List<MiniStatItemVo> recentSkinTestTrend;
     private List<MiniUserItemVo> recentUsers;
     private List<MiniSkinTestItemVo> recentSkinTests;
     private List<MiniCheckinItemVo> recentCheckins;

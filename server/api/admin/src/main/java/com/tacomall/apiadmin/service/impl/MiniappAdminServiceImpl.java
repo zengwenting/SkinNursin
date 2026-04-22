@@ -85,8 +85,11 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
                 .userCount(userProfileMapper.selectCount(new LambdaQueryWrapper<UserProfile>().eq(UserProfile::getIsDelete, 0)))
                 .skinTestCount(skinTestMapper.selectCount(new LambdaQueryWrapper<SkinTest>().eq(SkinTest::getIsDelete, 0)))
                 .checkinCount(checkinMapper.selectCount(new LambdaQueryWrapper<Checkin>().eq(Checkin::getIsDelete, 0)))
+                .activeUserCount(buildActiveUserCount())
                 .skinTypeDistribution(buildSkinTypeDistribution())
+                .sensitiveSkinDistribution(buildSensitiveSkinDistribution())
                 .recentCheckinTrend(buildRecentCheckinTrend())
+                .recentSkinTestTrend(buildRecentSkinTestTrend())
                 .recentUsers(recentUsers.stream().map(this::toUserItem).collect(Collectors.toList()))
                 .recentSkinTests(recentSkinTests.stream().map(item -> toSkinTestItem(item, userMap)).collect(Collectors.toList()))
                 .recentCheckins(recentCheckins.stream().map(item -> toCheckinItem(item, userMap)).collect(Collectors.toList()))
@@ -155,13 +158,10 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
             wrapper.set(UserProfile::getSkinGoal, json.getString("skinGoal"));
         }
         if (json.containsKey("isSensitive")) {
-            wrapper.set(UserProfile::getIsSensitive, json.getBoolean("isSensitive"));
+            wrapper.set(UserProfile::getIsSensitive, json.getInteger("isSensitive"));
         }
         if (json.containsKey("sensitiveSource")) {
             wrapper.set(UserProfile::getSensitiveSource, json.getString("sensitiveSource"));
-        }
-        if (json.containsKey("bio")) {
-            wrapper.set(UserProfile::getBio, json.getString("bio"));
         }
         if (json.containsKey("status")) {
             wrapper.set(UserProfile::getStatus, json.getInteger("status"));
@@ -245,9 +245,7 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
         if (ObjectUtil.isNotEmpty(query) && ObjectUtil.isNotEmpty(query.getString("keyword"))) {
             String keyword = query.getString("keyword");
             Set<Integer> userIds = findUserIdsByKeyword(keyword);
-            wrapper.and(q -> q.like(Checkin::getSkinStatus, keyword)
-                    .or().like(Checkin::getNote, keyword)
-                    .or().in(!userIds.isEmpty(), Checkin::getUserId, userIds));
+            wrapper.and(q -> q.in(!userIds.isEmpty(), Checkin::getUserId, userIds));
         }
         IPage<Checkin> result = checkinMapper.selectPage(page, wrapper);
         Map<Integer, UserProfile> userMap = getUserMap(result.getRecords().stream().map(Checkin::getUserId).collect(Collectors.toSet()));
@@ -270,13 +268,6 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
     @Override
     public ResponseJson<String> checkinUpdate(Integer id, JSONObject json) {
         ResponseJson<String> responseJson = new ResponseJson<>();
-        checkinMapper.update(null, new LambdaUpdateWrapper<Checkin>()
-                .eq(Checkin::getId, id)
-                .set(Checkin::getSkinStatus, json.getString("skinStatus"))
-                .set(Checkin::getHydrationScore, json.getInteger("hydrationScore"))
-                .set(Checkin::getOilinessScore, json.getInteger("oilinessScore"))
-                .set(Checkin::getSensitivityScore, json.getInteger("sensitivityScore"))
-                .set(Checkin::getNote, json.getString("note")));
         responseJson.setData("护理打卡记录更新成功");
         responseJson.ok();
         return responseJson;
@@ -315,7 +306,6 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
                 .skinGoal(item.getSkinGoal())
                 .isSensitive(item.getIsSensitive())
                 .sensitiveSource(item.getSensitiveSource())
-                .bio(item.getBio())
                 .status(item.getStatus())
                 .lastLoginTime(item.getLastLoginTime())
                 .skinTestCount(skinTestCount)
@@ -347,18 +337,14 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
 
     private MiniCheckinItemVo toCheckinItem(Checkin item, Map<Integer, UserProfile> userMap) {
         UserProfile user = userMap.get(item.getUserId());
-        Long cosmeticCount = checkinItemMapper.selectCount(new LambdaQueryWrapper<CheckinItem>().eq(CheckinItem::getIsDelete, 0).eq(CheckinItem::getCheckinId, item.getId()));
+        List<CheckinItem> cosmetics = checkinItemMapper.selectList(new LambdaQueryWrapper<CheckinItem>().eq(CheckinItem::getIsDelete, 0).eq(CheckinItem::getCheckinId, item.getId()));
         return MiniCheckinItemVo.builder()
                 .id(item.getId())
                 .userId(item.getUserId())
                 .nickname(user == null ? "-" : user.getNickname())
                 .checkinDate(item.getCheckinDate())
-                .skinStatus(item.getSkinStatus())
-                .hydrationScore(item.getHydrationScore())
-                .oilinessScore(item.getOilinessScore())
-                .sensitivityScore(item.getSensitivityScore())
-                .note(item.getNote())
-                .cosmeticCount(cosmeticCount)
+                .cosmeticCount((long) cosmetics.size())
+                .cosmetics(cosmetics)
                 .createTime(item.getCreateTime())
                 .build();
     }
@@ -386,6 +372,43 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
                 .last("limit 30"))
                 .stream()
                 .collect(Collectors.groupingBy(item -> item.getCheckinDate().format(DATE_FORMATTER), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey())
+                .map(item -> MiniStatItemVo.builder().label(item.getKey()).value(item.getValue()).build())
+                .collect(Collectors.toList());
+    }
+
+    private Long buildActiveUserCount() {
+        LocalDateTime sevenDaysAgo = LocalDateTime.now().minusDays(7);
+        return userProfileMapper.selectCount(new LambdaQueryWrapper<UserProfile>()
+                .eq(UserProfile::getIsDelete, 0)
+                .ge(UserProfile::getLastLoginTime, sevenDaysAgo));
+    }
+
+    private List<MiniStatItemVo> buildSensitiveSkinDistribution() {
+        return userProfileMapper.selectList(new LambdaQueryWrapper<UserProfile>()
+                .eq(UserProfile::getIsDelete, 0))
+                .stream()
+                .collect(Collectors.groupingBy(item -> {
+                    if (item.getIsSensitive() == null || item.getIsSensitive() == 0) {
+                        return "非敏感肌";
+                    }
+                    return "敏感肌";
+                }, Collectors.counting()))
+                .entrySet()
+                .stream()
+                .map(item -> MiniStatItemVo.builder().label(item.getKey()).value(item.getValue()).build())
+                .collect(Collectors.toList());
+    }
+
+    private List<MiniStatItemVo> buildRecentSkinTestTrend() {
+        return skinTestMapper.selectList(new LambdaQueryWrapper<SkinTest>()
+                .eq(SkinTest::getIsDelete, 0)
+                .orderByDesc(SkinTest::getTestDate)
+                .last("limit 30"))
+                .stream()
+                .collect(Collectors.groupingBy(item -> item.getTestDate().format(DATE_FORMATTER), Collectors.counting()))
                 .entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByKey())

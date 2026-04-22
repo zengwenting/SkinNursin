@@ -31,23 +31,37 @@ const report = ref(null);
 
 const randomScore = (base) => base + Math.floor(Math.random() * 8);
 
-const takePhoto = () => {
-  uni.chooseImage({
-    count: 1,
-    sourceType: ["camera"],
-    camera: "front",
-    success: async (res) => {
-      photo.value = res.tempFilePaths[0];
-      report.value = await api.createSkinTest({
-        skinType: "combination",
-        hydrationScore: randomScore(80),
-        oilinessScore: randomScore(35),
-        sensitivityScore: randomScore(20),
-        poreScore: randomScore(40),
-        blackheadScore: randomScore(30),
-      });
-    },
-  });
+const takePhoto = async () => {
+  try {
+    // 获取系统配置
+    const config = await api.getSystemConfig();
+    
+    // 检查配置是否有效
+    if (!config || !config.ai_api_key || !config.ai_api_url || !config.ai_model) {
+      uni.showToast({ title: "大模型连接失败", icon: "none" });
+      return;
+    }
+    
+    uni.chooseImage({
+      count: 1,
+      sourceType: ["camera"],
+      camera: "front",
+      success: async (res) => {
+        photo.value = res.tempFilePaths[0];
+        report.value = await api.createSkinTest({
+          skinType: "combination",
+          hydrationScore: randomScore(80),
+          oilinessScore: randomScore(35),
+          sensitivityScore: randomScore(20),
+          poreScore: randomScore(40),
+          blackheadScore: randomScore(30),
+        });
+      },
+    });
+  } catch (err) {
+    console.error('获取系统配置失败:', err);
+    uni.showToast({ title: "大模型连接失败", icon: "none" });
+  }
 };
 </script>
 

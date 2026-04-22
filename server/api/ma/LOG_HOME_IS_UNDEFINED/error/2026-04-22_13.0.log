@@ -1,0 +1,14 @@
+[2026-04-22 13:48:06.269] ERROR 20432 [           main]o.s.b.diagnostics.LoggingFailureAnalysisReporter.report£¨£©@40 : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 4002 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 4002 or configure this application to listen on another port.
+

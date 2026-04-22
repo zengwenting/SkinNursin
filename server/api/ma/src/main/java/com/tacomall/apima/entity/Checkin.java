@@ -28,16 +28,6 @@ public class Checkin {
 
     private LocalDate checkinDate;
 
-    private String skinStatus;
-
-    private Integer hydrationScore;
-
-    private Integer oilinessScore;
-
-    private Integer sensitivityScore;
-
-    private String note;
-
     @TableField(fill = FieldFill.INSERT)
     private Integer isDelete;
 

@@ -42,9 +42,7 @@ public class UserProfileServiceImpl implements UserProfileService {
         if (request.getAccount() != null) {
             wrapper.set(UserProfile::getAccount, request.getAccount());
         }
-        if (request.getPassword() != null) {
-            wrapper.set(UserProfile::getPassword, request.getPassword());
-        }
+
         if (request.getAge() != null) {
             wrapper.set(UserProfile::getAge, request.getAge());
         }
@@ -63,14 +61,17 @@ public class UserProfileServiceImpl implements UserProfileService {
         if (request.getSensitiveSource() != null) {
             wrapper.set(UserProfile::getSensitiveSource, request.getSensitiveSource());
         }
-        if (request.getBio() != null) {
-            wrapper.set(UserProfile::getBio, request.getBio());
-        }
         if (request.getStatus() != null) {
             wrapper.set(UserProfile::getStatus, request.getStatus());
         }
         if (request.getLastLoginTime() != null) {
             wrapper.set(UserProfile::getLastLoginTime, request.getLastLoginTime());
+        }
+        if (request.getRemindtime() != null) {
+            wrapper.set(UserProfile::getRemindtime, request.getRemindtime());
+        }
+        if (request.getOnclock() != null) {
+            wrapper.set(UserProfile::getOnclock, request.getOnclock());
         }
         
         userProfileMapper.update(null, wrapper);

@@ -5,6 +5,7 @@ import api from "@/utils/api";
 const AUTH_STORAGE_KEY = "ma_auth_profile";
 const INFO_STORAGE_KEY = "ma_profile_info";
 const ALARM_STORAGE_KEY = "ma_alarm_settings";
+const TOKEN_STORAGE_KEY = "ma_token";
 
 const defaultProfileInfo = () => ({
   skinType: "",
@@ -13,7 +14,6 @@ const defaultProfileInfo = () => ({
   isSensitive: false,
   sensitiveSources: [],
   goals: [],
-  bio: "",
 });
 
 const defaultAlarmSettings = () => ({
@@ -44,9 +44,10 @@ export default defineStore({
     userId: DEFAULT_USER_ID,
     user: null,
     todayCheckin: null,
-    authProfile: null,
+    authProfile: {},
     profileInfo: defaultProfileInfo(),
     alarmSettings: defaultAlarmSettings(),
+    token: '',
   }),
   getters: {
     isCheckedIn: (state) => Boolean(state.todayCheckin?.checkedIn),
@@ -58,7 +59,8 @@ export default defineStore({
       await Promise.allSettled([this.refreshUser(), this.refreshTodayCheckin()]);
     },
     loadLocalState() {
-      this.authProfile = readStorage(AUTH_STORAGE_KEY, null);
+      this.authProfile = readStorage(AUTH_STORAGE_KEY, {}) || {};
+      this.token = readStorage(TOKEN_STORAGE_KEY, '');
       this.profileInfo = {
         ...defaultProfileInfo(),
         ...readStorage(INFO_STORAGE_KEY, {}),
@@ -75,9 +77,15 @@ export default defineStore({
       };
       writeStorage(AUTH_STORAGE_KEY, this.authProfile);
     },
+    setToken(token) {
+      this.token = token || '';
+      writeStorage(TOKEN_STORAGE_KEY, this.token);
+    },
     logout() {
-      this.authProfile = null;
-      writeStorage(AUTH_STORAGE_KEY, null);
+      this.authProfile = {};
+      this.token = '';
+      writeStorage(AUTH_STORAGE_KEY, {});
+      writeStorage(TOKEN_STORAGE_KEY, '');
     },
     updateProfileInfo(payload) {
       this.profileInfo = {
@@ -96,6 +104,22 @@ export default defineStore({
     async refreshUser() {
       try {
         this.user = await api.getUserInfo(this.userId);
+        // 更新 authProfile 状态，确保前端显示的头像和昵称与后端保持一致
+        if (this.user) {
+          this.setAuthProfile({
+            avatar: this.user.avatar,
+            nickname: this.user.nickname
+          });
+          // 更新 profileInfo 状态，确保前端显示的用户信息与后端保持一致
+          this.updateProfileInfo({
+            skinType: this.user.skinType || "",
+            age: this.user.age || "",
+            gender: this.user.gender || "",
+            isSensitive: this.user.isSensitive === 1,
+            sensitiveSources: this.user.sensitiveSource ? this.user.sensitiveSource.split(", ") : [],
+            goals: this.user.skinGoal ? this.user.skinGoal.split(", ") : [],
+          });
+        }
         return this.user;
       } catch (err) {
         this.user = this.user || null;

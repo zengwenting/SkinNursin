@@ -86,17 +86,7 @@
         </checkbox-group>
       </view>
 
-      <view class="info-item vertical-item">
-        <text class="label">个人简介</text>
-        <textarea
-          v-if="editing"
-          class="textarea-input"
-          v-model="form.bio"
-          placeholder="请输入个人简介"
-          rows="3"
-        />
-        <text v-else class="value">{{ form.bio || "-" }}</text>
-      </view>
+
     </view>
   </view>
 </template>
@@ -136,7 +126,6 @@ const form = reactive({
   isSensitive: false,
   sensitiveSources: [],
   goals: [],
-  bio: "",
 });
 
 const syncFromStore = () => {
@@ -147,7 +136,6 @@ const syncFromStore = () => {
   form.isSensitive = typeof profileInfo.isSensitive === "boolean" ? profileInfo.isSensitive : false;
   form.sensitiveSources = Array.isArray(profileInfo.sensitiveSources) ? [...profileInfo.sensitiveSources] : [];
   form.goals = Array.isArray(profileInfo.goals) ? [...profileInfo.goals] : [];
-  form.bio = profileInfo.bio || "";
 };
 
 const skinTypeIndex = computed(() => {
@@ -211,7 +199,6 @@ const toggleEdit = async () => {
         isSensitive: form.isSensitive,
         sensitiveSource: form.isSensitive ? form.sensitiveSources.join(", ") : "",
         skinGoal: form.goals.join(", "),
-        bio: form.bio,
       });
       appStore.updateProfileInfo({
         skinType: form.skinType,
@@ -220,7 +207,6 @@ const toggleEdit = async () => {
         isSensitive: form.isSensitive,
         sensitiveSources: form.sensitiveSources,
         goals: form.goals,
-        bio: form.bio,
       });
       uni.showToast({ title: textSaved, icon: "success" });
     } catch (error) {
@@ -231,8 +217,9 @@ const toggleEdit = async () => {
   editing.value = !editing.value;
 };
 
-onMounted(() => {
+onMounted(async () => {
   appStore.loadLocalState();
+  await appStore.refreshUser();
   syncFromStore();
 });
 </script>

@@ -69,6 +69,12 @@ export const api = {
   getRecommend(skinType) {
     return request("/ai/recommend", { params: { skinType } });
   },
+  login(data) {
+    return request("/auth/login", { method: "POST", data });
+  },
+  getSystemConfig() {
+    return request("/system/config");
+  },
 };
 
 export default api;

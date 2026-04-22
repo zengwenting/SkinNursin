@@ -49,11 +49,7 @@ public class CheckinServiceImpl implements CheckinService {
         Checkin checkin = Checkin.builder()
                 .userId(userId)
                 .checkinDate(today)
-                .skinStatus(request.getSkinStatus())
-                .hydrationScore(request.getHydrationScore())
-                .oilinessScore(request.getOilinessScore())
-                .sensitivityScore(request.getSensitivityScore())
-                .note(request.getNote())
+
                 .isDelete(0)
                 .createTime(LocalDateTime.now())
                 .updateTime(LocalDateTime.now())

@@ -19,7 +19,6 @@
               <th>ID</th>
               <th>用户</th>
               <th>日期</th>
-              <th>状态</th>
               <th>操作</th>
             </tr>
           </thead>
@@ -28,7 +27,6 @@
               <td>{{ item.id }}</td>
               <td>{{ item.nickname || "-" }}</td>
               <td>{{ item.checkinDate || "-" }}</td>
-              <td>{{ item.skinStatus || "-" }}</td>
               <td><a-button size="small" @click="openDetail(item.id)">查看详情</a-button></td>
             </tr>
           </tbody>
@@ -39,14 +37,23 @@
     <section class="detail_card">
       <div class="detail_head">
         <h3>打卡详情</h3>
-        <a-button v-if="detail.id" type="primary" @click="saveDetail">保存修改</a-button>
       </div>
       <div v-if="detail.id" class="detail_form">
-        <label><span>皮肤状态</span><input v-model="detail.skinStatus" /></label>
-        <label><span>补水评分</span><input v-model="detail.hydrationScore" type="number" /></label>
-        <label><span>出油评分</span><input v-model="detail.oilinessScore" type="number" /></label>
-        <label><span>敏感评分</span><input v-model="detail.sensitivityScore" type="number" /></label>
-        <label class="full"><span>备注</span><textarea v-model="detail.note" rows="5"></textarea></label>
+        <label><span>用户</span><div class="readonly_value">{{ detail.nickname || "-" }}</div></label>
+        <label><span>打卡时间</span><div class="readonly_value">{{ detail.createTime || "-" }}</div></label>
+      </div>
+      <div v-if="detail.id" class="detail_section">
+        <h4>使用产品列表</h4>
+        <div v-if="detail.cosmetics && detail.cosmetics.length > 0" class="cosmetic_list">
+          <div v-for="cosmetic in detail.cosmetics" :key="cosmetic.id" class="cosmetic_item">
+            <img class="cosmetic_image" :src="cosmetic.cosmeticImage || 'https://via.placeholder.com/80'" alt="{{ cosmetic.cosmeticName }}" />
+            <div class="cosmetic_name">{{ cosmetic.cosmeticName }}</div>
+          </div>
+        </div>
+        <div v-else class="empty_state">
+          <div class="empty_icon">📦</div>
+          <div class="empty_text">未使用任何产品</div>
+        </div>
       </div>
       <div v-else class="empty_panel">请选择左侧打卡记录查看详情</div>
     </section>
@@ -96,4 +103,48 @@ onMounted(loadData);
 
 <style lang="less">
 @import "./_management.less";
+
+.detail_section {
+  margin-top: 20px;
+  
+  h4 {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .cosmetic_list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .cosmetic_item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    
+    .cosmetic_image {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+    
+    .cosmetic_name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+    }
+  }
+  
+  .empty_state {
+    text-align: center;
+    padding: 30px;
+    color: #999;
+  }
+}
 </style>

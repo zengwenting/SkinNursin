@@ -18,8 +18,7 @@
             <tr>
               <th>ID</th>
               <th>用户</th>
-              <th>测试次数</th>
-              <th>打卡次数</th>
+              <th>记录数</th>
               <th>上次登录</th>
               <th>注册时间</th>
               <th>状态</th>
@@ -33,10 +32,12 @@
                 <strong>{{ item.nickname || "-" }}</strong>
                 <p>{{ item.account || "-" }}</p>
               </td>
-              <td>{{ item.skinTestCount || 0 }}</td>
-              <td>{{ item.checkinCount || 0 }}</td>
-              <td>{{ item.lastLoginTime || "-" }}</td>
-              <td>{{ item.createTime || "-" }}</td>
+              <td>
+                <div>测试 {{ item.skinTestCount || 0 }}</div>
+                <div>打卡 {{ item.checkinCount || 0 }}</div>
+              </td>
+              <td>{{ item.lastLoginTime ? item.lastLoginTime.split(' ')[0] : "-" }}</td>
+              <td>{{ item.createTime ? item.createTime.split(' ')[0] : "-" }}</td>
               <td>{{ item.status === 1 ? "正常" : "禁用" }}</td>
               <td>
                 <a-button size="small" @click="openDetail(item.id)">查看详情</a-button>
@@ -58,37 +59,32 @@
     <section class="detail_card">
       <div class="detail_head">
         <h3>用户详情</h3>
-        <a-button v-if="detail.id" type="primary" @click="saveDetail">保存修改</a-button>
       </div>
 
       <div v-if="detail.id" class="detail_form">
         <label>
           <span>昵称</span>
-          <input v-model="detail.nickname" />
+          <div class="readonly_value">{{ detail.nickname || "-" }}</div>
         </label>
         <label>
           <span>账号</span>
-          <input v-model="detail.account" />
+          <div class="readonly_value">{{ detail.account || "-" }}</div>
         </label>
         <label>
           <span>年龄</span>
-          <input v-model="detail.age" type="number" />
+          <div class="readonly_value">{{ detail.age || "-" }}</div>
         </label>
         <label>
           <span>性别</span>
-          <input v-model="detail.gender" />
+          <div class="readonly_value">{{ detail.gender || "-" }}</div>
         </label>
         <label>
           <span>肤质</span>
-          <input v-model="detail.skinType" />
+          <div class="readonly_value">{{ detail.skinType || "-" }}</div>
         </label>
         <label>
           <span>护肤目标</span>
-          <input v-model="detail.skinGoal" />
-        </label>
-        <label class="full">
-          <span>个人简介</span>
-          <textarea v-model="detail.bio" rows="5"></textarea>
+          <div class="readonly_value">{{ detail.skinGoal || "-" }}</div>
         </label>
       </div>
       <div v-else class="empty_panel">请选择左侧用户查看详情</div>
@@ -263,6 +259,15 @@ onMounted(loadData);
     border-radius: 14px;
     outline: none;
     background: #fffafb;
+  }
+
+  .detail_form .readonly_value {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #eddde2;
+    border-radius: 14px;
+    background: #fffafb;
+    color: #5a4d54;
   }
 
   .empty_panel {

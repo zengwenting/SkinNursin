@@ -1,0 +1,60 @@
+[2026-04-21 22:39:17.601] INFO  18920 [kground-preinit]org.hibernate.validator.internal.util.Version.<clinit>（）@21 : HV000001: Hibernate Validator 8.0.1.Final
+[2026-04-21 22:39:17.643] INFO  18920 [           main]com.tacomall.apima.ApiMaApplication.logStarting（）@50 : Starting ApiMaApplication using Java 17.0.18 with PID 18920 (E:\毕业设计\code\tacomall\server\api\ma\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\ma)
+[2026-04-21 22:39:17.646] INFO  18920 [           main]com.tacomall.apima.ApiMaApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-21 22:39:26.597] INFO  18920 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-21 22:39:26.600] INFO  18920 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-21 22:39:26.634] INFO  18920 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+[2026-04-21 22:39:27.561] INFO  18920 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4002 (http)
+[2026-04-21 22:39:27.571] INFO  18920 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4002"]
+[2026-04-21 22:39:27.574] INFO  18920 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-21 22:39:27.574] INFO  18920 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-21 22:39:27.716] INFO  18920 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-21 22:39:27.717] INFO  18920 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 10023 ms
+[2026-04-21 22:39:27.848] INFO  18920 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-21 22:39:28.007] INFO  18920 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@79604abe
+[2026-04-21 22:39:28.010] INFO  18920 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-21 22:39:28.011] INFO  18920 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-21 22:39:28.011] INFO  18920 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-21 22:39:28.841] INFO  18920 [           main]com.tacomall.common.config.RedisConfig.logRedisConnectionMode（）@55 : Redis connection settings prepared. address=127.0.0.1:10010, authMode=password-only
+[2026-04-21 22:39:29.076] INFO  18920 [           main]com.tacomall.common.config.WxMaConfiguration.init（）@98 : ? 微信小程序服務初始化成功！共加載 1 個配置。
+[2026-04-21 22:39:29.311] INFO  18920 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@73 : Redis is configured with password-only authentication.
+[2026-04-21 22:39:29.311] INFO  18920 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@80 : JedisPool injected successfully
+[2026-04-21 22:39:29.311] INFO  18920 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@81 : redis address: 127.0.0.1:10010
+[2026-04-21 22:39:29.669] INFO  18920 [           main]com.tacomall.common.config.WxPayConfiguration.wxService（）@32 : ?? 檢測到微信支付配置初始化，正在使用開發者硬編碼模式...
+[2026-04-21 22:39:29.776] INFO  18920 [           main]com.tacomall.common.config.WxPayConfiguration.wxService（）@57 : ? 微信支付服務 (WxPayService) 初始化成功！(硬編碼模式)
+[2026-04-21 22:39:30.451] INFO  18920 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4002"]
+[2026-04-21 22:39:30.473] INFO  18920 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@215 : dynamic-datasource start closing ....
+[2026-04-21 22:39:30.474] INFO  18920 [           main]com.zaxxer.hikari.HikariDataSource.close（）@350 : master - Shutdown initiated...
+[2026-04-21 22:39:30.482] INFO  18920 [           main]com.zaxxer.hikari.HikariDataSource.close（）@352 : master - Shutdown completed.
+[2026-04-21 22:39:30.482] INFO  18920 [           main]c.b.d.d.destroyer.DefaultDataSourceDestroyer.destroy（）@98 : dynamic-datasource close the datasource named [master] success,
+[2026-04-21 22:39:30.482] INFO  18920 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@219 : dynamic-datasource all closed success,bye
+[2026-04-21 22:40:22.059] INFO  24212 [kground-preinit]org.hibernate.validator.internal.util.Version.<clinit>（）@21 : HV000001: Hibernate Validator 8.0.1.Final
+[2026-04-21 22:40:22.101] INFO  24212 [           main]com.tacomall.apima.ApiMaApplication.logStarting（）@50 : Starting ApiMaApplication using Java 17.0.18 with PID 24212 (E:\毕业设计\code\tacomall\server\api\ma\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\ma)
+[2026-04-21 22:40:22.103] INFO  24212 [           main]com.tacomall.apima.ApiMaApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-21 22:40:31.116] INFO  24212 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-21 22:40:31.119] INFO  24212 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-21 22:40:31.154] INFO  24212 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+[2026-04-21 22:40:32.097] INFO  24212 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4002 (http)
+[2026-04-21 22:40:32.107] INFO  24212 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4002"]
+[2026-04-21 22:40:32.110] INFO  24212 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-21 22:40:32.111] INFO  24212 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-21 22:40:32.250] INFO  24212 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-21 22:40:32.251] INFO  24212 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 10103 ms
+[2026-04-21 22:40:32.379] INFO  24212 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-21 22:40:32.525] INFO  24212 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@5c839677
+[2026-04-21 22:40:32.527] INFO  24212 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-21 22:40:32.528] INFO  24212 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-21 22:40:32.528] INFO  24212 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-21 22:40:33.401] INFO  24212 [           main]com.tacomall.common.config.RedisConfig.logRedisConnectionMode（）@55 : Redis connection settings prepared. address=127.0.0.1:10010, authMode=password-only
+[2026-04-21 22:40:33.650] INFO  24212 [           main]com.tacomall.common.config.WxMaConfiguration.init（）@98 : ? 微信小程序服務初始化成功！共加載 1 個配置。
+[2026-04-21 22:40:33.884] INFO  24212 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@73 : Redis is configured with password-only authentication.
+[2026-04-21 22:40:33.884] INFO  24212 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@80 : JedisPool injected successfully
+[2026-04-21 22:40:33.884] INFO  24212 [           main]com.tacomall.common.config.RedisConfig.redisPoolFactory（）@81 : redis address: 127.0.0.1:10010
+[2026-04-21 22:40:34.177] INFO  24212 [           main]com.tacomall.common.config.WxPayConfiguration.wxService（）@32 : ?? 檢測到微信支付配置初始化，正在使用開發者硬編碼模式...
+[2026-04-21 22:40:34.291] INFO  24212 [           main]com.tacomall.common.config.WxPayConfiguration.wxService（）@57 : ? 微信支付服務 (WxPayService) 初始化成功！(硬編碼模式)
+[2026-04-21 22:40:34.974] INFO  24212 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4002"]
+[2026-04-21 22:40:35.235] INFO  24212 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.start（）@221 : Tomcat started on port 4002 (http) with context path ''
+[2026-04-21 22:40:35.256] INFO  24212 [           main]com.tacomall.apima.ApiMaApplication.logStarted（）@56 : Started ApiMaApplication in 13.724 seconds (process running for 14.741)
+[2026-04-21 22:54:50.250] INFO  24212 [nio-4002-exec-1]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2026-04-21 22:54:50.250] INFO  24212 [nio-4002-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@532 : Initializing Servlet 'dispatcherServlet'
+[2026-04-21 22:54:50.251] INFO  24212 [nio-4002-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@554 : Completed initialization in 1 ms

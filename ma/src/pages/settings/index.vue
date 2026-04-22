@@ -22,32 +22,81 @@
 <script setup>
 import { onMounted, reactive } from "vue";
 import useAppStore from "@/store/app";
+import api from "@/utils/api";
 
 const appStore = useAppStore();
 const alarm = reactive({
   enabled: false,
-  time: "21:00",
+  time: "08:00",
 });
+
+
 
 const syncFromStore = () => {
   alarm.enabled = Boolean(appStore.alarmSettings?.enabled);
-  alarm.time = appStore.alarmSettings?.time || "21:00";
+  alarm.time = appStore.alarmSettings?.time || "08:00";
 };
 
-const onToggleAlarm = (e) => {
-  alarm.enabled = Boolean(e.detail.value);
-  appStore.updateAlarmSettings({
-    enabled: alarm.enabled,
-    time: alarm.time,
-  });
+// 订阅消息
+const subscribeMessage = async () => {
+  try {
+    const res = await wx.requestSubscribeMessage({
+      tmplIds: ['tgWzJiNGFoA0HQLc4TdjLzf3c9rHCcuSeskHMx2RbFI'],
+      success: (res) => {
+        console.log('订阅消息成功', res);
+      },
+      fail: (err) => {
+        console.error('订阅消息失败', err);
+      }
+    });
+    return res;
+  } catch (err) {
+    console.error('订阅消息异常', err);
+    return null;
+  }
 };
 
-const onTimeChange = (e) => {
-  alarm.time = e.detail.value;
-  appStore.updateAlarmSettings({
-    enabled: alarm.enabled,
-    time: alarm.time,
-  });
+// 更新数据库
+const updateDatabase = async (time, enabled) => {
+  try {
+    // 更新本地存储
+    appStore.updateAlarmSettings({
+      enabled: enabled,
+      time: time,
+    });
+    
+    // 更新后端数据库
+    await api.updateUser({
+      remindtime: time,
+      onclock: enabled
+    });
+  } catch (err) {
+    console.error('更新数据库失败', err);
+  }
+};
+
+const onToggleAlarm = async (e) => {
+  const enabled = Boolean(e.detail.value);
+  alarm.enabled = enabled;
+  
+  // 开启闹钟时订阅消息
+  if (enabled) {
+    await subscribeMessage();
+  }
+  
+  // 更新数据库
+  await updateDatabase(alarm.time, enabled);
+};
+
+const onTimeChange = async (e) => {
+  const time = e.detail.value;
+  alarm.time = time;
+  
+  // 订阅消息
+  await subscribeMessage();
+  
+  // 更新数据库
+  await updateDatabase(time, alarm.enabled);
 };
 
 onMounted(() => {

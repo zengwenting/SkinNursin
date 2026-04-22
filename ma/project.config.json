@@ -1,11 +1,12 @@
 {
-  "appid": "wx0038a1d24bb9eb99",
+  "appid": "wx71e8253474775cba",
   "compileType": "miniprogram",
   "libVersion": "2.25.4",
   "packOptions": {
     "ignore": [],
     "include": []
   },
+  "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
     "coverView": true,
     "es6": true,

@@ -29,7 +29,7 @@ public class UserProfile {
 
     private String account;
 
-    private String password;
+
 
     private Integer age;
 
@@ -39,15 +39,19 @@ public class UserProfile {
 
     private String skinGoal;
 
-    private Boolean isSensitive;
+    private Integer isSensitive;
 
     private String sensitiveSource;
-
-    private String bio;
 
     private Integer status;
 
     private LocalDateTime lastLoginTime;
+
+    private String openid;
+
+    private String remindtime;
+
+    private Boolean onclock;
 
     @TableField(fill = FieldFill.INSERT)
     private Integer isDelete;

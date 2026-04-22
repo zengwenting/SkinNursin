@@ -26,16 +26,22 @@
         <div ref="skinTypeChartRef" class="chart_canvas"></div>
       </div>
       <div class="chart_card">
-        <div class="chart_head">
-          <h3>化妆台产品分类</h3>
+          <div class="chart_head">
+            <h3>敏感肌占比</h3>
+          </div>
+          <div ref="sensitiveSkinChartRef" class="chart_canvas"></div>
         </div>
-        <div ref="cosmeticChartRef" class="chart_canvas"></div>
+      <div class="chart_card chart_card--wide">
+        <div class="chart_head">
+          <h3>近期打卡数量趋势</h3>
+        </div>
+        <div ref="checkinTrendChartRef" class="chart_canvas"></div>
       </div>
       <div class="chart_card chart_card--wide">
         <div class="chart_head">
-          <h3>近期开卡趋势</h3>
+          <h3>近期测试数量趋势</h3>
         </div>
-        <div ref="checkinTrendChartRef" class="chart_canvas"></div>
+        <div ref="skinTestTrendChartRef" class="chart_canvas"></div>
       </div>
     </section>
   </div>
@@ -49,18 +55,20 @@ import { skinAssistantAdminApi } from "@/utils/skin-assistant-admin-api";
 
 const dashboard = reactive({});
 const skinTypeChartRef = ref(null);
-const cosmeticChartRef = ref(null);
+const sensitiveSkinChartRef = ref(null);
 const checkinTrendChartRef = ref(null);
+const skinTestTrendChartRef = ref(null);
 
 let skinTypeChart = null;
-let cosmeticChart = null;
+let sensitiveSkinChart = null;
 let checkinTrendChart = null;
+let skinTestTrendChart = null;
 
 const stats = computed(() => [
   { label: "小程序用户", value: dashboard.userCount || 0 },
   { label: "肤质测试记录", value: dashboard.skinTestCount || 0 },
   { label: "护理打卡记录", value: dashboard.checkinCount || 0 },
-  { label: "化妆台产品", value: dashboard.cosmeticCount || 0 },
+  { label: "活跃用户数量", value: dashboard.activeUserCount || 0 },
 ]);
 
 async function loadDashboard() {
@@ -76,11 +84,14 @@ function renderCharts() {
   if (!skinTypeChart && skinTypeChartRef.value) {
     skinTypeChart = echarts.init(skinTypeChartRef.value);
   }
-  if (!cosmeticChart && cosmeticChartRef.value) {
-    cosmeticChart = echarts.init(cosmeticChartRef.value);
+  if (!sensitiveSkinChart && sensitiveSkinChartRef.value) {
+    sensitiveSkinChart = echarts.init(sensitiveSkinChartRef.value);
   }
   if (!checkinTrendChart && checkinTrendChartRef.value) {
     checkinTrendChart = echarts.init(checkinTrendChartRef.value);
+  }
+  if (!skinTestTrendChart && skinTestTrendChartRef.value) {
+    skinTestTrendChart = echarts.init(skinTestTrendChartRef.value);
   }
 
   skinTypeChart?.setOption({
@@ -97,21 +108,22 @@ function renderCharts() {
     ],
   });
 
-  cosmeticChart?.setOption({
+  sensitiveSkinChart?.setOption({
     tooltip: { trigger: "item" },
-    xAxis: {
-      type: "category",
-      data: (dashboard.cosmeticCategoryDistribution || []).map((item) => item.label),
-    },
-    yAxis: { type: "value" },
     series: [
       {
-        type: "bar",
-        data: (dashboard.cosmeticCategoryDistribution || []).map((item) => item.value),
+        type: "pie",
+        radius: ["45%", "72%"],
+        data: (dashboard.sensitiveSkinDistribution || []).map((item) => ({
+          name: item.label,
+          value: item.value,
+        })),
         itemStyle: {
-          borderRadius: [8, 8, 0, 0],
-          color: "#e4a8be",
-        },
+          color: function(params) {
+            const colors = ['#c9839c', '#e4a8be'];
+            return colors[params.dataIndex % colors.length];
+          }
+        }
       },
     ],
   });
@@ -128,6 +140,31 @@ function renderCharts() {
         type: "line",
         smooth: true,
         data: (dashboard.recentCheckinTrend || []).map((item) => item.value),
+        areaStyle: {
+          color: "rgba(228, 168, 190, 0.18)",
+        },
+        lineStyle: {
+          color: "#c9839c",
+        },
+        itemStyle: {
+          color: "#c9839c",
+        },
+      },
+    ],
+  });
+
+  skinTestTrendChart?.setOption({
+    tooltip: { trigger: "axis" },
+    xAxis: {
+      type: "category",
+      data: (dashboard.recentSkinTestTrend || []).map((item) => item.label),
+    },
+    yAxis: { type: "value" },
+    series: [
+      {
+        type: "line",
+        smooth: true,
+        data: (dashboard.recentSkinTestTrend || []).map((item) => item.value),
         areaStyle: {
           color: "rgba(228, 168, 190, 0.18)",
         },
