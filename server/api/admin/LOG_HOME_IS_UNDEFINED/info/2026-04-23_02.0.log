@@ -1,0 +1,4 @@
+[2026-04-23 02:00:08.180] INFO  13968 [nio-4001-exec-1]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog£¨£©@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 02:00:08.189] INFO  13968 [nio-4001-exec-1]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog£¨£©@57 : [ "admin", "123456" ]
+[2026-04-23 02:51:20.929] INFO  13968 [idationThread-1]o.a.s.session.mgt.AbstractValidatingSessionManager.validateSessions£¨£©@275 : Validating all active sessions...
+[2026-04-23 02:51:20.930] INFO  13968 [idationThread-1]o.a.s.session.mgt.AbstractValidatingSessionManager.validateSessions£¨£©@308 : Finished session validation.  No sessions were stopped.

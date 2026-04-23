@@ -7,9 +7,42 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import topLevelAwait from "vite-plugin-top-level-await";
 import postcsspxtoviewport8plugin from "postcss-px-to-viewport-8-plugin";
 
+// 自定义插件，阻止@zyb-data/stats-h5的加载
+const blockZybStatsPlugin = {
+  name: 'block-zyb-stats',
+  resolveId(id) {
+    if (id.includes('@zyb-data/stats-h5') || id.includes('@zyb-data/stats-core')) {
+      return { id: 'blocked-zyb-stats', external: true };
+    }
+  },
+  load(id) {
+    if (id === 'blocked-zyb-stats') {
+      return 'export default {}';
+    }
+  },
+  transform(code, id) {
+    // 替换代码中的@zyb-data/stats-h5和@zyb-data/stats-core引用
+    if (id.includes('node_modules') || id.includes('dist')) {
+      code = code
+        .replace(/@zyb-data\/stats-h5/g, 'blocked-zyb-stats')
+        .replace(/@zyb-data\/stats-core/g, 'blocked-zyb-stats');
+      
+      // 替换可能导致v[w] is not a function错误的代码
+      code = code.replace(/v\[w\]\s*\(\)/g, '');
+      
+      // 替换与zyb stats相关的初始化代码
+      code = code.replace(/new\s+.*zyb.*stats.*\(/g, '');
+      code = code.replace(/\.load\(.*zyb.*\)/g, '');
+      code = code.replace(/\.init\(.*zyb.*\)/g, '');
+    }
+    return code;
+  }
+};
+
 // Web 管理后台的 Vite 配置
 export default defineConfig({
   plugins: [
+    blockZybStatsPlugin,
     vue(),
     vueJsx(),
     topLevelAwait({

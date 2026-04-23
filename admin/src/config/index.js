@@ -18,7 +18,11 @@ import {
   Steps,
   Tag,
   message,
+  Modal,
   Tabs,
+  Table,
+  Space,
+  Form,
   ImagePreviewGroup,
   Image,
   Tree,
@@ -43,6 +47,10 @@ const LOCAL_APP_CONFIG = {
           staffLogout: { path: "org/staffLogout", method: "POST" },
           staffInfo: { path: "org/staffInfo", method: "POST" },
           staffAccessRuleList: { path: "org/staffAccessRuleList", method: "POST" },
+          staffPage: { path: "org/staffPage", method: "POST" },
+          staffAdd: { path: "org/staffAdd", method: "POST" },
+          staffUpdate: { path: "org/staffUpdate", method: "POST" },
+          staffDelete: { path: "org/staffDelete", method: "POST" },
         },
       },
     },
@@ -65,12 +73,17 @@ export const antDesignInstall = (app) => {
   app.use(Tag);
   app.use(Tabs);
   app.use(Steps);
+  app.use(Modal);
+  app.use(Table);
+  app.use(Space);
+  app.use(Form);
   app.use(ImagePreviewGroup);
   app.use(Image);
   app.use(Tree);
   app.use(Timeline);
   app.use(TimelineItem);
   app.config.globalProperties.$message = message;
+  app.config.globalProperties.$modal = Modal;
 };
 
 export const codingtalkVueToolkitInstall = async (app) => {
@@ -92,6 +105,10 @@ export const codingtalkVueToolkitInstall = async (app) => {
   axiosWrapper.spread = axios.spread?.bind(axios);
   axiosWrapper.defaults = axios.defaults;
   axiosWrapper.interceptors = axios.interceptors;
+  
+  // 尝试禁用统计功能
+  window.__ZYB_STATS_DISABLED__ = true;
+  
   await install(
     app,
     {
@@ -107,6 +124,14 @@ export const codingtalkVueToolkitInstall = async (app) => {
         jwtKey: "user-access-token",
       },
       hook: {
+        httpBefore: (config) => {
+          const token = localCache.get(TOKEN_KEY);
+          if (token) {
+            config.headers = config.headers || {};
+            config.headers['user-access-token'] = token;
+          }
+          return config;
+        },
         httpAfter: (res) => {
           const { data, status } = res;
           if (data?.code === 4200) {

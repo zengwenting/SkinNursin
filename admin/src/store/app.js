@@ -35,9 +35,9 @@ export default defineStore({
           (res) => {
             const { status, data } = res;
             if (status) {
-              const { isAdmin } = data;
+              const { isAdmin, role } = data;
               this.isLogin = true;
-              this.isAdmin = isAdmin;
+              this.isAdmin = isAdmin || role === 'admin';
               this.user = data;
               resolve(data);
             }
@@ -64,17 +64,22 @@ export default defineStore({
     async accessInit() {
       const userInfo = await this.getUserInfo();
       const menuJson = MINI_APP_MENU;
-      const { isAdmin } = userInfo;
+      const { isAdmin, role } = userInfo;
+      const isAdminRole = isAdmin || role === 'admin';
       return new Promise((resolve) => {
         OrgStaff.sendApi("staffAccessRuleList").then((res) => {
           const { status, data } = res;
           if (status) {
             const accessRuleIds = data.map((i) => i.id);
             this.accessRuleIds = accessRuleIds;
-            if (isAdmin) {
+            if (isAdminRole) {
               this.menu = cloneDeep(menuJson);
             } else {
               this.menu = cloneDeep(menuJson).filter((i) => {
+                // 普通运营看不到"账号中心"菜单
+                if (i.path === '/account') {
+                  return false;
+                }
                 if (i.accessRuleId) {
                   if (Array.isArray(i.accessRuleId)) {
                     return (
@@ -88,6 +93,10 @@ export default defineStore({
                 }
                 if (i.sub && i.sub.length) {
                   i.sub = i.sub.filter((j) => {
+                    // 普通运营看不到"账号中心"菜单
+                    if (j.path === '/account/profile') {
+                      return false;
+                    }
                     if (!j.accessRuleId) {
                       return true;
                     }
@@ -110,9 +119,13 @@ export default defineStore({
               });
             }
             let routes = cloneDeep(routesDynamic);
-            if (!isAdmin) {
+            if (!isAdminRole) {
               routes.forEach((i) => {
                 i.children = i.children.filter((j) => {
+                  // 普通运营看不到"账号中心"路由
+                  if (j.path === 'account/profile') {
+                    return false;
+                  }
                   if (j.meta && j.meta.accessRuleId) {
                     if (Array.isArray(j.meta.accessRuleId)) {
                       return (

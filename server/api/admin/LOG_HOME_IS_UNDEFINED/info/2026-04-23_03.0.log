@@ -1,0 +1,8 @@
+[2026-04-23 03:13:38.117] INFO  13968 [nio-4001-exec-7]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog£¨£©@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 03:13:38.117] INFO  13968 [nio-4001-exec-7]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog£¨£©@57 : [ "admin", "123456" ]
+[2026-04-23 03:17:28.091] INFO  13968 [io-4001-exec-10]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog£¨£©@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 03:17:28.091] INFO  13968 [io-4001-exec-10]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog£¨£©@57 : [ "16607574271", "123456" ]
+[2026-04-23 03:19:35.047] INFO  13968 [nio-4001-exec-3]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog£¨£©@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 03:19:35.047] INFO  13968 [nio-4001-exec-3]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog£¨£©@57 : [ "16607574271", "123456" ]
+[2026-04-23 03:23:05.994] INFO  13968 [nio-4001-exec-3]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog£¨£©@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 03:23:05.994] INFO  13968 [nio-4001-exec-3]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog£¨£©@57 : [ "16607574271", "123456" ]

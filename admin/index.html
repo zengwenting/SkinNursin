@@ -6,6 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/icon/index.css" />
     <title>皮肤护理小助手后台管理系统</title>
+    <script>
+      // 阻止@zyb-data/stats-h5的执行
+      window.__ZYB_STATS_DISABLED__ = true;
+      
+      // 重写document.createElement，阻止创建script标签加载@zyb-data/stats-h5
+      const originalCreateElement = document.createElement;
+      document.createElement = function(tagName) {
+        if (tagName === 'script') {
+          const script = originalCreateElement.call(this, tagName);
+          const originalSetAttribute = script.setAttribute;
+          script.setAttribute = function(name, value) {
+            // 阻止加载包含@zyb-data/stats-h5的脚本
+            if (name === 'src' && value.includes('zyb-data')) {
+              return;
+            }
+            originalSetAttribute.call(this, name, value);
+          };
+          return script;
+        }
+        return originalCreateElement.call(this, tagName);
+      };
+      
+      // 重写XMLHttpRequest，阻止请求包含@zyb-data/stats-h5的资源
+      const originalXHROpen = XMLHttpRequest.prototype.open;
+      XMLHttpRequest.prototype.open = function(method, url) {
+        // 阻止请求包含zyb-data的资源
+        if (url.includes('zyb-data')) {
+          return;
+        }
+        return originalXHROpen.apply(this, arguments);
+      };
+    </script>
   </head>
   <body>
     <div id="app"></div>

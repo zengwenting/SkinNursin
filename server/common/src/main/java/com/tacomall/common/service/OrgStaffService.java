@@ -25,4 +25,6 @@ public interface OrgStaffService extends IService<OrgStaff> {
     ResponseJson<OrgStaff> add(JSONObject json);
 
     ResponseJson<String> update(Integer id, JSONObject json);
+
+    ResponseJson<String> delete(Integer id);
 }

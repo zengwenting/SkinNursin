@@ -1,0 +1,30 @@
+[2026-04-22 23:00:56.787] INFO  3680 [idationThread-1]o.a.s.session.mgt.AbstractValidatingSessionManager.validateSessions（）@275 : Validating all active sessions...
+[2026-04-22 23:00:56.795] INFO  3680 [idationThread-1]o.a.s.session.mgt.AbstractValidatingSessionManager.validateSessions（）@308 : Finished session validation.  No sessions were stopped.
+[2026-04-22 23:42:45.087] INFO  21248 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 21248 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-22 23:42:45.092] INFO  21248 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-22 23:42:46.386] INFO  21248 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-22 23:42:46.391] INFO  21248 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-22 23:42:46.442] INFO  21248 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+[2026-04-22 23:42:47.528] INFO  21248 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-22 23:42:47.781] INFO  21248 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@17ff8810
+[2026-04-22 23:42:47.784] INFO  21248 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-22 23:42:47.785] INFO  21248 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-22 23:42:47.785] INFO  21248 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-22 23:42:49.665] INFO  21248 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-22 23:42:49.684] INFO  21248 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-22 23:42:49.695] INFO  21248 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-22 23:42:49.706] INFO  21248 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-22 23:42:49.873] INFO  21248 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-22 23:42:49.874] INFO  21248 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 4704 ms
+[2026-04-22 23:42:52.829] INFO  21248 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-22 23:42:52.881] INFO  21248 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@215 : dynamic-datasource start closing ....
+[2026-04-22 23:42:52.887] INFO  21248 [           main]com.zaxxer.hikari.HikariDataSource.close（）@350 : master - Shutdown initiated...
+[2026-04-22 23:42:52.909] INFO  21248 [           main]com.zaxxer.hikari.HikariDataSource.close（）@352 : master - Shutdown completed.
+[2026-04-22 23:42:52.909] INFO  21248 [           main]c.b.d.d.destroyer.DefaultDataSourceDestroyer.destroy（）@98 : dynamic-datasource close the datasource named [master] success,
+[2026-04-22 23:42:52.910] INFO  21248 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@219 : dynamic-datasource all closed success,bye
+[2026-04-22 23:59:58.157] INFO  16060 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 16060 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-22 23:59:58.157] INFO  16060 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-22 23:59:59.072] INFO  16060 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-22 23:59:59.072] INFO  16060 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-22 23:59:59.104] INFO  16060 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+[2026-04-22 23:59:59.855] INFO  16060 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...

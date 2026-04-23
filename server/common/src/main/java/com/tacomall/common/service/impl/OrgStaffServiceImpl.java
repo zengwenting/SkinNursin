@@ -99,9 +99,14 @@ public class OrgStaffServiceImpl extends ServiceImpl<OrgStaffMapper, OrgStaff> i
   public ResponseJson<OrgStaff> info(Integer id) {
     ResponseJson<OrgStaff> responseJson = new ResponseJson<>();
     OrgStaff orgStaff = (OrgStaff) SecurityUtils.getSubject().getPrincipal();
-    responseJson.setData(baseMapper
+    OrgStaff staff = baseMapper
         .selectOne(
-            new QueryWrapper<OrgStaff>().lambda().eq(OrgStaff::getId, id.equals(0) ? orgStaff.getId() : id)));
+            new QueryWrapper<OrgStaff>().lambda().eq(OrgStaff::getId, id.equals(0) ? orgStaff.getId() : id));
+    // 确保 staff 对象有 role 字段
+    if (staff != null && staff.getRole() == null) {
+      staff.setRole("admin"); // 默认设置为 admin
+    }
+    responseJson.setData(staff);
     responseJson.ok();
     return responseJson;
   }
@@ -144,7 +149,14 @@ public class OrgStaffServiceImpl extends ServiceImpl<OrgStaffMapper, OrgStaff> i
     }
     q.eq(OrgStaff::getIsDelete, 0);
     IPage<OrgStaff> result = baseMapper.queryPage(page, q);
-    responsePaginatorVo.setData(result.getRecords());
+    // 确保所有 staff 对象都有 role 字段
+    List<OrgStaff> records = result.getRecords();
+    for (OrgStaff staff : records) {
+      if (staff.getRole() == null) {
+        staff.setRole("operator"); // 默认设置为 operator
+      }
+    }
+    responsePaginatorVo.setData(records);
     responsePaginatorVo.buildPage(result.getCurrent(), result.getSize(), result.getTotal());
     responsePaginatorVo.ok();
     return responsePaginatorVo;
@@ -177,6 +189,15 @@ public class OrgStaffServiceImpl extends ServiceImpl<OrgStaffMapper, OrgStaff> i
     baseMapper.update(null, luw);
     responseJson.ok();
     responseJson.setData("更新成功");
+    return responseJson;
+  }
+
+  @Override
+  public ResponseJson<String> delete(Integer id) {
+    ResponseJson<String> responseJson = new ResponseJson<>();
+    baseMapper.deleteById(id);
+    responseJson.ok();
+    responseJson.setData("删除成功");
     return responseJson;
   }
 

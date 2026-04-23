@@ -42,4 +42,6 @@ public class OrgStaff implements Serializable {
 
     private LocalDateTime deleteTime;
 
+    private String role;
+
 }

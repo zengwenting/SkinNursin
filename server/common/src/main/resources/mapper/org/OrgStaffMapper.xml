@@ -10,12 +10,19 @@
         <id property="id" column="id"></id>
         <result property="jobId" column="job_id"></result>
         <result property="deptId" column="dept_id"></result>
-        <association property="orgJob" column="job_id" select="com.tacomall.common.mapper.org.OrgJobMapper.selectById"></association>
-        <association property="orgDept" column="dept_id" select="com.tacomall.common.mapper.org.OrgDeptMapper.selectById"></association>
-        <association property="orgStaffAccount" column="id" select="com.tacomall.common.mapper.org.OrgStaffAccountMapper.selectById"></association>
+        <result property="isAdmin" column="is_admin"></result>
+        <result property="username" column="username"></result>
+        <result property="nickname" column="nickname"></result>
+        <result property="passwd" column="passwd"></result>
+        <result property="status" column="status"></result>
+        <result property="isDelete" column="is_delete"></result>
+        <result property="createTime" column="create_time"></result>
+        <result property="updateTime" column="update_time"></result>
+        <result property="deleteTime" column="delete_time"></result>
+        <result property="role" column="role"></result>
     </resultMap>
 
-    <select id="queryPage" resultMap="orgStaffPage">
+    <select id="queryPage" resultMap="orgStaff">
         SELECT *
         FROM org_staff
         ${ew.customSqlSegment}

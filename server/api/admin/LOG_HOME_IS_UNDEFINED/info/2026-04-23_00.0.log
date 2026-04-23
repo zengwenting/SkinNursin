@@ -1,0 +1,280 @@
+[2026-04-23 00:00:00.090] INFO  16060 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a567f7b
+[2026-04-23 00:00:00.107] INFO  16060 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-23 00:00:00.110] INFO  16060 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-23 00:00:00.110] INFO  16060 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-23 00:00:01.799] INFO  16060 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-23 00:00:01.799] INFO  16060 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:00:01.815] INFO  16060 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-23 00:00:01.815] INFO  16060 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-23 00:00:01.978] INFO  16060 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-23 00:00:01.978] INFO  16060 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 3756 ms
+[2026-04-23 00:00:03.771] INFO  16060 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:00:03.808] INFO  16060 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.start（）@221 : Tomcat started on port 4001 (http) with context path ''
+[2026-04-23 00:00:03.848] INFO  16060 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarted（）@56 : Started ApiAdminApplication in 6.324 seconds (process running for 6.857)
+[2026-04-23 00:08:11.760] INFO  28096 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 28096 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-23 00:08:11.764] INFO  28096 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-23 00:08:12.622] INFO  28096 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-23 00:08:12.625] INFO  28096 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-23 00:08:12.660] INFO  28096 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+[2026-04-23 00:08:13.343] INFO  28096 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-23 00:08:13.557] INFO  28096 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a567f7b
+[2026-04-23 00:08:13.559] INFO  28096 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-23 00:08:13.561] INFO  28096 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-23 00:08:13.561] INFO  28096 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-23 00:08:14.855] INFO  28096 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-23 00:08:14.864] INFO  28096 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:08:14.867] INFO  28096 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-23 00:08:14.867] INFO  28096 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-23 00:08:14.977] INFO  28096 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-23 00:08:14.978] INFO  28096 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 3161 ms
+[2026-04-23 00:08:16.577] INFO  28096 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:08:16.604] INFO  28096 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.start（）@221 : Tomcat started on port 4001 (http) with context path ''
+[2026-04-23 00:08:16.632] INFO  28096 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarted（）@56 : Started ApiAdminApplication in 5.463 seconds (process running for 6.007)
+[2026-04-23 00:09:00.218] INFO  28096 [nio-4001-exec-1]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2026-04-23 00:09:00.218] INFO  28096 [nio-4001-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@532 : Initializing Servlet 'dispatcherServlet'
+[2026-04-23 00:09:00.220] INFO  28096 [nio-4001-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@554 : Completed initialization in 2 ms
+[2026-04-23 00:09:00.232] INFO  28096 [nio-4001-exec-1]o.a.s.session.mgt.AbstractValidatingSessionManager.enableSessionValidation（）@233 : Enabling session validation scheduler...
+[2026-04-23 00:09:00.448] INFO  28096 [nio-4001-exec-3]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 00:09:00.463] INFO  28096 [nio-4001-exec-3]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@57 : [ "16607574271", "123456" ]
+[2026-04-23 00:10:51.975] INFO  28096 [nio-4001-exec-2]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 00:10:51.975] INFO  28096 [nio-4001-exec-2]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@57 : [ "16607574271", "123456" ]
+[2026-04-23 00:13:58.997] INFO  20980 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 20980 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-23 00:13:58.999] INFO  20980 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-23 00:14:07.986] INFO  20980 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-23 00:14:07.988] INFO  20980 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-23 00:14:08.017] INFO  20980 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+[2026-04-23 00:14:08.583] INFO  20980 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-23 00:14:08.739] INFO  20980 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a567f7b
+[2026-04-23 00:14:08.740] INFO  20980 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-23 00:14:08.741] INFO  20980 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-23 00:14:08.741] INFO  20980 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-23 00:14:09.868] INFO  20980 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-23 00:14:09.879] INFO  20980 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:14:09.881] INFO  20980 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-23 00:14:09.881] INFO  20980 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-23 00:14:09.993] INFO  20980 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-23 00:14:09.993] INFO  20980 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 10947 ms
+[2026-04-23 00:14:11.366] INFO  20980 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:14:11.387] INFO  20980 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@215 : dynamic-datasource start closing ....
+[2026-04-23 00:14:11.389] INFO  20980 [           main]com.zaxxer.hikari.HikariDataSource.close（）@350 : master - Shutdown initiated...
+[2026-04-23 00:14:11.400] INFO  20980 [           main]com.zaxxer.hikari.HikariDataSource.close（）@352 : master - Shutdown completed.
+[2026-04-23 00:14:11.400] INFO  20980 [           main]c.b.d.d.destroyer.DefaultDataSourceDestroyer.destroy（）@98 : dynamic-datasource close the datasource named [master] success,
+[2026-04-23 00:14:11.400] INFO  20980 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@219 : dynamic-datasource all closed success,bye
+[2026-04-23 00:15:22.353] INFO  15412 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 15412 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-23 00:15:22.358] INFO  15412 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-23 00:15:25.243] INFO  15412 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-23 00:15:25.246] INFO  15412 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-23 00:15:25.367] INFO  15412 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 23 ms. Found 0 Redis repository interfaces.
+[2026-04-23 00:15:27.808] INFO  15412 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-23 00:15:29.599] INFO  15412 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@16cb9989
+[2026-04-23 00:15:29.599] INFO  15412 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-23 00:15:29.605] INFO  15412 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-23 00:15:29.605] INFO  15412 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-23 00:15:34.735] INFO  15412 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-23 00:15:34.754] INFO  15412 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:15:34.761] INFO  15412 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-23 00:15:34.761] INFO  15412 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-23 00:15:35.069] INFO  15412 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-23 00:15:35.070] INFO  15412 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 12569 ms
+[2026-04-23 00:15:39.473] INFO  15412 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:15:40.110] INFO  15412 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.start（）@221 : Tomcat started on port 4001 (http) with context path ''
+[2026-04-23 00:15:40.152] INFO  15412 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarted（）@56 : Started ApiAdminApplication in 19.7 seconds (process running for 24.048)
+[2026-04-23 00:15:53.588] INFO  15412 [nio-4001-exec-1]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2026-04-23 00:15:53.589] INFO  15412 [nio-4001-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@532 : Initializing Servlet 'dispatcherServlet'
+[2026-04-23 00:15:53.591] INFO  15412 [nio-4001-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@554 : Completed initialization in 2 ms
+[2026-04-23 00:15:53.616] INFO  15412 [nio-4001-exec-2]o.a.s.session.mgt.AbstractValidatingSessionManager.enableSessionValidation（）@233 : Enabling session validation scheduler...
+[2026-04-23 00:16:58.224] INFO  15412 [nio-4001-exec-8]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 00:16:58.238] INFO  15412 [nio-4001-exec-8]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@57 : [ "16607574271", "12345" ]
+[2026-04-23 00:17:03.324] INFO  15412 [nio-4001-exec-2]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 00:17:03.325] INFO  15412 [nio-4001-exec-2]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@57 : [ "16607574271", "123456" ]
+[2026-04-23 00:19:25.216] INFO  21068 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 21068 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-23 00:19:25.219] INFO  21068 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-23 00:19:34.299] INFO  21068 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-23 00:19:34.301] INFO  21068 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-23 00:19:34.332] INFO  21068 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+[2026-04-23 00:19:34.880] INFO  21068 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-23 00:19:35.028] INFO  21068 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@28be7fec
+[2026-04-23 00:19:35.031] INFO  21068 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-23 00:19:35.031] INFO  21068 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-23 00:19:35.031] INFO  21068 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-23 00:19:36.085] INFO  21068 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-23 00:19:36.092] INFO  21068 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:19:36.094] INFO  21068 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-23 00:19:36.094] INFO  21068 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-23 00:19:36.199] INFO  21068 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-23 00:19:36.200] INFO  21068 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 10936 ms
+[2026-04-23 00:19:37.570] INFO  21068 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:19:37.592] INFO  21068 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@215 : dynamic-datasource start closing ....
+[2026-04-23 00:19:37.594] INFO  21068 [           main]com.zaxxer.hikari.HikariDataSource.close（）@350 : master - Shutdown initiated...
+[2026-04-23 00:19:37.602] INFO  21068 [           main]com.zaxxer.hikari.HikariDataSource.close（）@352 : master - Shutdown completed.
+[2026-04-23 00:19:37.602] INFO  21068 [           main]c.b.d.d.destroyer.DefaultDataSourceDestroyer.destroy（）@98 : dynamic-datasource close the datasource named [master] success,
+[2026-04-23 00:19:37.602] INFO  21068 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@219 : dynamic-datasource all closed success,bye
+[2026-04-23 00:20:24.532] INFO  16620 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 16620 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-23 00:20:24.533] INFO  16620 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-23 00:20:25.678] INFO  16620 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-23 00:20:25.681] INFO  16620 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-23 00:20:25.726] INFO  16620 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+[2026-04-23 00:20:26.633] INFO  16620 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-23 00:20:26.875] INFO  16620 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@de77146
+[2026-04-23 00:20:26.879] INFO  16620 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-23 00:20:26.881] INFO  16620 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-23 00:20:26.881] INFO  16620 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-23 00:20:28.778] INFO  16620 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-23 00:20:28.784] INFO  16620 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:20:28.788] INFO  16620 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-23 00:20:28.788] INFO  16620 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-23 00:20:28.904] INFO  16620 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-23 00:20:28.904] INFO  16620 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 4282 ms
+[2026-04-23 00:20:30.325] INFO  16620 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:20:30.620] INFO  16620 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.start（）@221 : Tomcat started on port 4001 (http) with context path ''
+[2026-04-23 00:20:30.648] INFO  16620 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarted（）@56 : Started ApiAdminApplication in 6.894 seconds (process running for 8.413)
+[2026-04-23 00:20:45.772] INFO  16620 [nio-4001-exec-1]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2026-04-23 00:20:45.772] INFO  16620 [nio-4001-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@532 : Initializing Servlet 'dispatcherServlet'
+[2026-04-23 00:20:45.773] INFO  16620 [nio-4001-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@554 : Completed initialization in 1 ms
+[2026-04-23 00:20:45.786] INFO  16620 [nio-4001-exec-1]o.a.s.session.mgt.AbstractValidatingSessionManager.enableSessionValidation（）@233 : Enabling session validation scheduler...
+[2026-04-23 00:21:28.657] INFO  16620 [nio-4001-exec-8]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 00:21:28.671] INFO  16620 [nio-4001-exec-8]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@57 : [ "16607574271", "123456" ]
+[2026-04-23 00:22:24.106] INFO  16620 [nio-4001-exec-2]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 00:22:24.106] INFO  16620 [nio-4001-exec-2]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@57 : [ "16607574271", "123456" ]
+[2026-04-23 00:35:29.006] INFO  21324 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 21324 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-23 00:35:29.009] INFO  21324 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-23 00:35:29.706] INFO  21324 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-23 00:35:29.709] INFO  21324 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-23 00:35:29.738] INFO  21324 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+[2026-04-23 00:35:30.295] INFO  21324 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-23 00:35:30.447] INFO  21324 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@28be7fec
+[2026-04-23 00:35:30.448] INFO  21324 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-23 00:35:30.450] INFO  21324 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-23 00:35:30.450] INFO  21324 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-23 00:35:31.623] INFO  21324 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-23 00:35:31.634] INFO  21324 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:35:31.636] INFO  21324 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-23 00:35:31.636] INFO  21324 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-23 00:35:31.748] INFO  21324 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-23 00:35:31.749] INFO  21324 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 2696 ms
+[2026-04-23 00:35:33.183] INFO  21324 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:35:33.207] INFO  21324 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@215 : dynamic-datasource start closing ....
+[2026-04-23 00:35:33.210] INFO  21324 [           main]com.zaxxer.hikari.HikariDataSource.close（）@350 : master - Shutdown initiated...
+[2026-04-23 00:35:33.222] INFO  21324 [           main]com.zaxxer.hikari.HikariDataSource.close（）@352 : master - Shutdown completed.
+[2026-04-23 00:35:33.222] INFO  21324 [           main]c.b.d.d.destroyer.DefaultDataSourceDestroyer.destroy（）@98 : dynamic-datasource close the datasource named [master] success,
+[2026-04-23 00:35:33.222] INFO  21324 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@219 : dynamic-datasource all closed success,bye
+[2026-04-23 00:36:26.346] INFO  22748 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 22748 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-23 00:36:26.350] INFO  22748 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-23 00:36:27.546] INFO  22748 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-23 00:36:27.548] INFO  22748 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-23 00:36:27.590] INFO  22748 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+[2026-04-23 00:36:28.484] INFO  22748 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-23 00:36:28.683] INFO  22748 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a567f7b
+[2026-04-23 00:36:28.687] INFO  22748 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-23 00:36:28.688] INFO  22748 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-23 00:36:28.688] INFO  22748 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-23 00:36:30.716] INFO  22748 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-23 00:36:30.727] INFO  22748 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:36:30.729] INFO  22748 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-23 00:36:30.730] INFO  22748 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-23 00:36:30.899] INFO  22748 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-23 00:36:30.901] INFO  22748 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 4450 ms
+[2026-04-23 00:36:32.982] INFO  22748 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:36:33.242] INFO  22748 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.start（）@221 : Tomcat started on port 4001 (http) with context path ''
+[2026-04-23 00:36:33.272] INFO  22748 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarted（）@56 : Started ApiAdminApplication in 7.696 seconds (process running for 9.813)
+[2026-04-23 00:36:54.774] INFO  22748 [nio-4001-exec-1]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2026-04-23 00:36:54.775] INFO  22748 [nio-4001-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@532 : Initializing Servlet 'dispatcherServlet'
+[2026-04-23 00:36:54.778] INFO  22748 [nio-4001-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@554 : Completed initialization in 2 ms
+[2026-04-23 00:36:54.795] INFO  22748 [nio-4001-exec-1]o.a.s.session.mgt.AbstractValidatingSessionManager.enableSessionValidation（）@233 : Enabling session validation scheduler...
+[2026-04-23 00:37:31.558] INFO  22748 [nio-4001-exec-4]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 00:37:31.577] INFO  22748 [nio-4001-exec-4]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@57 : [ "16607574271", "123456" ]
+[2026-04-23 00:37:53.915] INFO  22748 [nio-4001-exec-9]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 00:37:53.915] INFO  22748 [nio-4001-exec-9]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@57 : [ "16607574271", "123456" ]
+[2026-04-23 00:45:04.931] INFO  12368 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 12368 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-23 00:45:04.934] INFO  12368 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-23 00:45:05.618] INFO  12368 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-23 00:45:05.619] INFO  12368 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-23 00:45:05.648] INFO  12368 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+[2026-04-23 00:45:06.194] INFO  12368 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-23 00:45:06.348] INFO  12368 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@28be7fec
+[2026-04-23 00:45:06.350] INFO  12368 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-23 00:45:06.351] INFO  12368 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-23 00:45:06.351] INFO  12368 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-23 00:45:07.515] INFO  12368 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-23 00:45:07.525] INFO  12368 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:45:07.527] INFO  12368 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-23 00:45:07.528] INFO  12368 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-23 00:45:07.678] INFO  12368 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-23 00:45:07.679] INFO  12368 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 2696 ms
+[2026-04-23 00:45:09.079] INFO  12368 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:45:09.107] INFO  12368 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@215 : dynamic-datasource start closing ....
+[2026-04-23 00:45:09.108] INFO  12368 [           main]com.zaxxer.hikari.HikariDataSource.close（）@350 : master - Shutdown initiated...
+[2026-04-23 00:45:09.120] INFO  12368 [           main]com.zaxxer.hikari.HikariDataSource.close（）@352 : master - Shutdown completed.
+[2026-04-23 00:45:09.120] INFO  12368 [           main]c.b.d.d.destroyer.DefaultDataSourceDestroyer.destroy（）@98 : dynamic-datasource close the datasource named [master] success,
+[2026-04-23 00:45:09.120] INFO  12368 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.destroy（）@219 : dynamic-datasource all closed success,bye
+[2026-04-23 00:48:54.157] INFO  20524 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 20524 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-23 00:48:54.160] INFO  20524 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-23 00:49:03.211] INFO  20524 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-23 00:49:03.213] INFO  20524 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-23 00:49:03.242] INFO  20524 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+[2026-04-23 00:49:03.769] INFO  20524 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-23 00:49:03.915] INFO  20524 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@28be7fec
+[2026-04-23 00:49:03.917] INFO  20524 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-23 00:49:03.918] INFO  20524 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-23 00:49:03.918] INFO  20524 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-23 00:49:04.968] INFO  20524 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-23 00:49:04.974] INFO  20524 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:49:04.976] INFO  20524 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-23 00:49:04.976] INFO  20524 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-23 00:49:05.082] INFO  20524 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-23 00:49:05.082] INFO  20524 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 10880 ms
+[2026-04-23 00:49:06.346] INFO  20524 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:49:06.595] INFO  20524 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.start（）@221 : Tomcat started on port 4001 (http) with context path ''
+[2026-04-23 00:49:06.618] INFO  20524 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarted（）@56 : Started ApiAdminApplication in 12.959 seconds (process running for 13.87)
+[2026-04-23 00:50:20.787] INFO  23684 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 23684 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-23 00:50:20.791] INFO  23684 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-23 00:50:29.880] INFO  23684 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-23 00:50:29.882] INFO  23684 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-23 00:50:29.911] INFO  23684 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+[2026-04-23 00:50:30.452] INFO  23684 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-23 00:50:30.603] INFO  23684 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@28be7fec
+[2026-04-23 00:50:30.603] INFO  23684 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-23 00:50:30.603] INFO  23684 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-23 00:50:30.603] INFO  23684 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-23 00:50:31.747] INFO  23684 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-23 00:50:31.755] INFO  23684 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:50:31.759] INFO  23684 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-23 00:50:31.759] INFO  23684 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-23 00:50:31.861] INFO  23684 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-23 00:50:31.862] INFO  23684 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 11025 ms
+[2026-04-23 00:50:33.178] INFO  23684 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:50:33.433] INFO  23684 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.start（）@221 : Tomcat started on port 4001 (http) with context path ''
+[2026-04-23 00:50:33.455] INFO  23684 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarted（）@56 : Started ApiAdminApplication in 13.165 seconds (process running for 14.008)
+[2026-04-23 00:50:54.437] INFO  23684 [nio-4001-exec-1]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2026-04-23 00:50:54.439] INFO  23684 [nio-4001-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@532 : Initializing Servlet 'dispatcherServlet'
+[2026-04-23 00:50:54.439] INFO  23684 [nio-4001-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@554 : Completed initialization in 0 ms
+[2026-04-23 00:50:54.449] INFO  23684 [nio-4001-exec-1]o.a.s.session.mgt.AbstractValidatingSessionManager.enableSessionValidation（）@233 : Enabling session validation scheduler...
+[2026-04-23 00:50:54.642] INFO  23684 [nio-4001-exec-1]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 00:50:54.660] INFO  23684 [nio-4001-exec-1]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@57 : [ "16607574271", "123456" ]
+[2026-04-23 00:52:05.458] INFO  27176 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarting（）@50 : Starting ApiAdminApplication using Java 17.0.18 with PID 27176 (E:\毕业设计\code\tacomall\server\api\admin\build\classes\java\main started by Administrator in E:\毕业设计\code\tacomall\server\api\admin)
+[2026-04-23 00:52:05.460] INFO  27176 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStartupProfileInfo（）@659 : The following 1 profile is active: "dev"
+[2026-04-23 00:52:14.546] INFO  27176 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.multipleStoresDetected（）@292 : Multiple Spring Data modules found, entering strict repository configuration mode
+[2026-04-23 00:52:14.549] INFO  27176 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@139 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2026-04-23 00:52:14.579] INFO  27176 [           main]o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn（）@208 : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+[2026-04-23 00:52:15.158] INFO  27176 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@80 : master - Starting...
+[2026-04-23 00:52:15.298] INFO  27176 [           main]com.zaxxer.hikari.pool.HikariPool.checkFailFast（）@565 : master - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a567f7b
+[2026-04-23 00:52:15.300] INFO  27176 [           main]com.zaxxer.hikari.HikariDataSource.<init>（）@82 : master - Start completed.
+[2026-04-23 00:52:15.301] INFO  27176 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.addDataSource（）@158 : dynamic-datasource - add a datasource named [master] success
+[2026-04-23 00:52:15.301] INFO  27176 [           main]c.b.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet（）@241 : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+[2026-04-23 00:52:16.350] INFO  27176 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize（）@108 : Tomcat initialized with port 4001 (http)
+[2026-04-23 00:52:16.358] INFO  27176 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Initializing ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:52:16.359] INFO  27176 [           main]org.apache.catalina.core.StandardService.log（）@173 : Starting service [Tomcat]
+[2026-04-23 00:52:16.361] INFO  27176 [           main]org.apache.catalina.core.StandardEngine.log（）@173 : Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2026-04-23 00:52:16.464] INFO  27176 [           main]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring embedded WebApplicationContext
+[2026-04-23 00:52:16.464] INFO  27176 [           main]o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext（）@296 : Root WebApplicationContext: initialization completed in 10962 ms
+[2026-04-23 00:52:17.728] INFO  27176 [           main]org.apache.coyote.http11.Http11NioProtocol.log（）@173 : Starting ProtocolHandler ["http-nio-4001"]
+[2026-04-23 00:52:17.971] INFO  27176 [           main]o.s.boot.web.embedded.tomcat.TomcatWebServer.start（）@221 : Tomcat started on port 4001 (http) with context path ''
+[2026-04-23 00:52:18.001] INFO  27176 [           main]com.tacomall.apiadmin.ApiAdminApplication.logStarted（）@56 : Started ApiAdminApplication in 13.015 seconds (process running for 13.87)
+[2026-04-23 00:52:31.092] INFO  27176 [nio-4001-exec-3]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log（）@173 : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2026-04-23 00:52:31.093] INFO  27176 [nio-4001-exec-3]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@532 : Initializing Servlet 'dispatcherServlet'
+[2026-04-23 00:52:31.094] INFO  27176 [nio-4001-exec-3]org.springframework.web.servlet.DispatcherServlet.initServletBean（）@554 : Completed initialization in 1 ms
+[2026-04-23 00:52:31.105] INFO  27176 [nio-4001-exec-3]o.a.s.session.mgt.AbstractValidatingSessionManager.enableSessionValidation（）@233 : Enabling session validation scheduler...
+[2026-04-23 00:52:39.366] INFO  27176 [nio-4001-exec-5]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 00:52:39.378] INFO  27176 [nio-4001-exec-5]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@57 : [ "16607574271", "123456" ]
+[2026-04-23 00:53:40.978] INFO  27176 [nio-4001-exec-1]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-23 00:53:40.978] INFO  27176 [nio-4001-exec-1]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog（）@57 : [ "16607574271", "123456" ]

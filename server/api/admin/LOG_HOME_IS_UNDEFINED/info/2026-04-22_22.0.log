@@ -1,0 +1,6 @@
+[2026-04-22 22:00:56.722] INFO  3680 [nio-4001-exec-1]o.a.c.core.ContainerBase.[Tomcat].[localhost].[/].log£¨£©@173 : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2026-04-22 22:00:56.729] INFO  3680 [nio-4001-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean£¨£©@532 : Initializing Servlet 'dispatcherServlet'
+[2026-04-22 22:00:56.735] INFO  3680 [nio-4001-exec-1]org.springframework.web.servlet.DispatcherServlet.initServletBean£¨£©@554 : Completed initialization in 6 ms
+[2026-04-22 22:00:56.774] INFO  3680 [nio-4001-exec-1]o.a.s.session.mgt.AbstractValidatingSessionManager.enableSessionValidation£¨£©@233 : Enabling session validation scheduler...
+[2026-04-22 22:34:28.488] INFO  3680 [nio-4001-exec-3]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog£¨£©@53 : com.tacomall.apiadmin.controller.OrgAuthController.staffLogin()
+[2026-04-22 22:34:28.497] INFO  3680 [nio-4001-exec-3]com.tacomall.common.aspect.OrgStaffLoginLogAspect.saveSysLog£¨£©@57 : [ "16607574271", "123456" ]
