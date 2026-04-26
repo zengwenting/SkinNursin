@@ -120,10 +120,8 @@ const handleProfileClick = async () => {
 // 处理微信头像选择事件
 const onChooseAvatar = async (e) => {
   try {
-    // 获取用户选择的头像信息
     const avatarUrl = e.detail.avatarUrl;
     
-    // 调用微信登录获取 code
     const loginRes = await new Promise((resolve, reject) => {
       uni.login({
         success: resolve,
@@ -135,27 +133,19 @@ const onChooseAvatar = async (e) => {
       throw new Error('获取微信登录码失败');
     }
     
-    // 模拟获取用户昵称（实际项目中可能需要用户输入）
     const nickname = '微信用户';
     
-    // 模拟 openid（实际项目中应该由后端通过 code 换取）
-    const openid = 'mock_openid_' + Date.now();
-    
-    // 调用登录接口
     const loginApiRes = await api.login({
       code: loginRes.code,
       nickname: nickname,
-      avatar: avatarUrl,
-      openid: openid
+      avatar: avatarUrl
     });
     
-    // 更新用户信息
     appStore.setAuthProfile({
       avatar: loginApiRes.avatar,
       nickname: loginApiRes.nickname
     });
     
-    // 模拟存储 token
     appStore.setToken('mock_token_' + Date.now());
     
     uni.showToast({ title: textLoginSuccess, icon: "success" });

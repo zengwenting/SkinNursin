@@ -7,6 +7,23 @@
       </div>
 
       <div class="config_form">
+        <!-- 微信小程序配置 -->
+        <div class="config_group">
+          <h4>微信小程序配置</h4>
+          <div class="form_row">
+            <label class="form_item">
+              <span>小程序 AppID</span>
+              <a-input v-model:value="form.wx_app_id" placeholder="请输入微信小程序 AppID" />
+            </label>
+          </div>
+          <div class="form_row">
+            <label class="form_item">
+              <span>小程序 AppSecret</span>
+              <a-input type="password" v-model:value="form.wx_app_secret" placeholder="请输入微信小程序 AppSecret" />
+            </label>
+          </div>
+        </div>
+
         <!-- 基础连接配置 -->
         <div class="config_group">
           <h4>基础连接配置</h4>
@@ -121,8 +138,9 @@ import { ref, reactive, onMounted, computed } from "vue";
 import { message } from "ant-design-vue";
 import { skinAssistantAdminApi } from "@/utils/skin-assistant-admin-api";
 
-// 表单数据
 const form = reactive({
+  wx_app_id: "",
+  wx_app_secret: "",
   ai_api_key: "",
   ai_api_url: "",
   ai_model: "",
@@ -134,27 +152,22 @@ const form = reactive({
   prompt_test: "",
 });
 
-// 滑块和数字输入框的双向绑定
 const temperatureValue = ref(0.7);
 const maxTokenValue = ref(2048);
 
-// 处理温度滑块变化
 const handleTemperatureChange = (value) => {
   form.ai_temperature = value.toString();
 };
 
-// 处理最大 token 变化
 const handleMaxTokenChange = (value) => {
   form.ai_max_token = value.toString();
 };
 
-// 加载配置数据
 async function loadConfig() {
   try {
     const res = await skinAssistantAdminApi.getConfigList();
     if (res?.status && res.data) {
       Object.assign(form, res.data);
-      // 更新滑块和数字输入框的值
       temperatureValue.value = parseFloat(form.ai_temperature || "0.7");
       maxTokenValue.value = parseInt(form.ai_max_token || "2048");
     }
@@ -163,7 +176,6 @@ async function loadConfig() {
   }
 }
 
-// 保存配置
 async function saveConfig() {
   try {
     const res = await skinAssistantAdminApi.updateConfig(form);
@@ -176,7 +188,6 @@ async function saveConfig() {
   }
 }
 
-// 页面加载时获取配置
 onMounted(loadConfig);
 </script>
 

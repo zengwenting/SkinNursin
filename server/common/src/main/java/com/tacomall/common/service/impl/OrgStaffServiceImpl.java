@@ -168,6 +168,7 @@ public class OrgStaffServiceImpl extends ServiceImpl<OrgStaffMapper, OrgStaff> i
     responseJson.setStatus(false);
     OrgStaff orgStaff = JSON.toJavaObject(json, OrgStaff.class);
     orgStaff.setPasswd(PasswordUtil.encode(orgStaff.getPasswd()));
+    orgStaff.setStatus(0); // 默认禁用
     baseMapper.insert(orgStaff);
     responseJson.ok();
     responseJson.setData(orgStaff);
@@ -183,8 +184,14 @@ public class OrgStaffServiceImpl extends ServiceImpl<OrgStaffMapper, OrgStaff> i
     if (StringUtil.isNotBlank(json.getString("nickname"))) {
       luw.set(OrgStaff::getNickname, json.getString("nickname"));
     }
+    if (StringUtil.isNotBlank(json.getString("username"))) {
+      luw.set(OrgStaff::getUsername, json.getString("username"));
+    }
     if (StringUtil.isNotBlank(json.getString("passwd"))) {
       luw.set(OrgStaff::getPasswd, PasswordUtil.encode(json.getString("passwd")));
+    }
+    if (json.containsKey("status")) {
+      luw.set(OrgStaff::getStatus, json.getInteger("status"));
     }
     baseMapper.update(null, luw);
     responseJson.ok();

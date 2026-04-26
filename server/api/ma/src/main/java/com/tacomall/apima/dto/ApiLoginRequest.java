@@ -10,6 +10,4 @@ public class ApiLoginRequest {
     private String nickname;
 
     private String avatar;
-
-    private String openid;
 }

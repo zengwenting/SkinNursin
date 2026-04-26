@@ -33,34 +33,128 @@ const randomScore = (base) => base + Math.floor(Math.random() * 8);
 
 const takePhoto = async () => {
   try {
-    // 获取系统配置
-    const config = await api.getSystemConfig();
-    
-    // 检查配置是否有效
-    if (!config || !config.ai_api_key || !config.ai_api_url || !config.ai_model) {
-      uni.showToast({ title: "大模型连接失败", icon: "none" });
-      return;
-    }
-    
     uni.chooseImage({
       count: 1,
       sourceType: ["camera"],
       camera: "front",
+      sizeType: ['compressed'], // 使用微信自动压缩
       success: async (res) => {
-        photo.value = res.tempFilePaths[0];
+        let tempImagePath = res.tempFilePaths[0];
+        
+        // 检查图片大小，大于5MB则二次压缩
+        const fileInfo = await new Promise((resolve) => {
+          uni.getFileInfo({
+            filePath: tempImagePath,
+            success: resolve,
+            fail: (err) => {
+              console.error('获取文件信息失败:', err);
+              resolve({ size: 0 });
+            }
+          });
+        });
+        
+        // 如果文件大于5MB，进行二次压缩
+        if (fileInfo.size > 5 * 1024 * 1024) {
+          const compressResult = await new Promise((resolve) => {
+            uni.compressImage({
+              src: tempImagePath,
+              quality: 80,
+              success: resolve,
+              fail: (err) => {
+                console.error('压缩图片失败:', err);
+                resolve({ tempFilePath: tempImagePath });
+              }
+            });
+          });
+          tempImagePath = compressResult.tempFilePath;
+        }
+        
+        // 上传图片到云存储
+        let fileID = null;
+        try {
+          const uploadResult = await new Promise((resolve) => {
+            wx.cloud.uploadFile({
+              cloudPath: 'skin-test/' + Date.now() + '.jpg',
+              filePath: tempImagePath,
+              success: resolve,
+              fail: (err) => {
+                console.error('上传图片失败:', err);
+                resolve(null);
+              }
+            });
+          });
+          if (uploadResult) {
+            fileID = uploadResult.fileID;
+          }
+        } catch (err) {
+          console.error('云存储上传失败:', err);
+        }
+        
+        // 显示图片预览
+        photo.value = tempImagePath;
+        
+        // 无论系统配置如何，都返回假数据
+        uni.showToast({ title: "大模型连接失败，使用模拟数据", icon: "none" });
+        
+        // 生成随机评分
+        const hydrationScore = Math.floor(Math.random() * 101);
+        const oilinessScore = Math.floor(Math.random() * 101);
+        const sensitivityScore = Math.floor(Math.random() * 101);
+        const poreScore = Math.floor(Math.random() * 101);
+        const blackheadScore = Math.floor(Math.random() * 101);
+        
+        // 计算测试总分（平均值）
+        const score = Math.floor((hydrationScore + oilinessScore + sensitivityScore + poreScore + blackheadScore) / 5);
+        
+        // 固定的总结和建议
+        const summary = "本次检测显示屏障状态整体平稳，建议继续保持规律作息。";
+        const advice = "建议加强补水护理，减少过度清洁，并持续观察鼻翼与面颊区域。";
+        
+        // 调用后端API保存假数据
         report.value = await api.createSkinTest({
+          testDate: fileID || tempImagePath, // 存储fileID或临时路径
           skinType: "combination",
-          hydrationScore: randomScore(80),
-          oilinessScore: randomScore(35),
-          sensitivityScore: randomScore(20),
-          poreScore: randomScore(40),
-          blackheadScore: randomScore(30),
+          hydrationScore: hydrationScore,
+          oilinessScore: oilinessScore,
+          sensitivityScore: sensitivityScore,
+          poreScore: poreScore,
+          blackheadScore: blackheadScore,
+          score: score,
+          summary: summary,
+          advice: advice
         });
       },
+      fail: (err) => {
+        console.error('选择图片失败:', err);
+        uni.showToast({ title: "选择图片失败", icon: "none" });
+      }
     });
   } catch (err) {
-    console.error('获取系统配置失败:', err);
-    uni.showToast({ title: "大模型连接失败", icon: "none" });
+    console.error('拍摄照片失败:', err);
+    uni.showToast({ title: "大模型连接失败，使用模拟数据", icon: "none" });
+    
+    // 即使出错也返回假数据
+    const hydrationScore = Math.floor(Math.random() * 101);
+    const oilinessScore = Math.floor(Math.random() * 101);
+    const sensitivityScore = Math.floor(Math.random() * 101);
+    const poreScore = Math.floor(Math.random() * 101);
+    const blackheadScore = Math.floor(Math.random() * 101);
+    const score = Math.floor((hydrationScore + oilinessScore + sensitivityScore + poreScore + blackheadScore) / 5);
+    const summary = "本次检测显示屏障状态整体平稳，建议继续保持规律作息。";
+    const advice = "建议加强补水护理，减少过度清洁，并持续观察鼻翼与面颊区域。";
+    
+    report.value = await api.createSkinTest({
+      testDate: "",
+      skinType: "combination",
+      hydrationScore: hydrationScore,
+      oilinessScore: oilinessScore,
+      sensitivityScore: sensitivityScore,
+      poreScore: poreScore,
+      blackheadScore: blackheadScore,
+      score: score,
+      summary: summary,
+      advice: advice
+    });
   }
 };
 </script>

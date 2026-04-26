@@ -1,6 +1,5 @@
 package com.tacomall.apima.entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
@@ -26,7 +25,7 @@ public class SkinTest {
 
     private Integer userId;
 
-    private LocalDate testDate;
+    private String testDate;
 
     private String skinType;
 
@@ -39,6 +38,8 @@ public class SkinTest {
     private Integer poreScore;
 
     private Integer blackheadScore;
+
+    private Integer score;
 
     private String summary;
 

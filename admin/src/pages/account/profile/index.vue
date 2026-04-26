@@ -23,8 +23,8 @@
         </template>
         <template #status="{ record }">
           <a-switch 
-            v-model:checked="record.status" 
-            @change="handleStatusChange(record)"
+            :checked="record.status === 1"
+            @change="(checked) => handleStatusChange(record, checked)"
             :disabled="record.role === 'admin'"
           />
         </template>
@@ -120,7 +120,7 @@ const columns = [
     slots: { customRender: 'role' },
   },
   {
-    title: '状态',
+    title: '账号启用',
     dataIndex: 'status',
     key: 'status',
     slots: { customRender: 'status' },
@@ -163,8 +163,8 @@ const fetchStaffList = async () => {
       },
     });
     if (response.status) {
-      staffList.value = response.data.data;
-      pagination.value.total = response.data.page.total;
+      staffList.value = response.data;
+      pagination.value.total = response.data.length;
     }
   } catch (error) {
     message.error('获取管理员列表失败');
@@ -242,25 +242,25 @@ const handleUpdate = async () => {
 };
 
 // 处理状态变更
-const handleStatusChange = async (record) => {
+const handleStatusChange = async (record, checked) => {
+  const newStatus = checked ? 1 : 0;
   try {
     const response = await OrgStaff.sendApi('staffUpdate', {
       params: {
         id: record.id,
         nickname: record.nickname,
         username: record.username,
-        status: record.status,
+        status: newStatus,
       },
       body: {},
     });
-    if (!response.status) {
-      // 恢复原来的状态
-      record.status = !record.status;
+    if (response.status) {
+      // 更新本地状态
+      record.status = newStatus;
+    } else {
       message.error('状态变更失败');
     }
   } catch (error) {
-    // 恢复原来的状态
-    record.status = !record.status;
     message.error('状态变更失败');
   }
 };

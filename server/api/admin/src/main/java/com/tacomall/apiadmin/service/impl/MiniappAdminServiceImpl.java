@@ -65,7 +65,6 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
         List<SkinTest> recentSkinTests = skinTestMapper.selectList(
                 new LambdaQueryWrapper<SkinTest>()
                         .eq(SkinTest::getIsDelete, 0)
-                        .orderByDesc(SkinTest::getTestDate)
                         .orderByDesc(SkinTest::getCreateTime)
                         .last("limit 5"));
         List<Checkin> recentCheckins = checkinMapper.selectList(
@@ -183,7 +182,6 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
         Page<SkinTest> page = new Page<>(pageIndex, pageSize);
         LambdaQueryWrapper<SkinTest> wrapper = new LambdaQueryWrapper<SkinTest>()
                 .eq(SkinTest::getIsDelete, 0)
-                .orderByDesc(SkinTest::getTestDate)
                 .orderByDesc(SkinTest::getCreateTime);
         if (ObjectUtil.isNotEmpty(query)) {
             if (ObjectUtil.isNotEmpty(query.getString("keyword"))) {
@@ -294,7 +292,7 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
     private MiniUserItemVo toUserItem(UserProfile item) {
         Long skinTestCount = skinTestMapper.selectCount(new LambdaQueryWrapper<SkinTest>().eq(SkinTest::getIsDelete, 0).eq(SkinTest::getUserId, item.getId()));
         Long checkinCount = checkinMapper.selectCount(new LambdaQueryWrapper<Checkin>().eq(Checkin::getIsDelete, 0).eq(Checkin::getUserId, item.getId()));
-        SkinTest lastSkinTest = skinTestMapper.selectOne(new LambdaQueryWrapper<SkinTest>().eq(SkinTest::getIsDelete, 0).eq(SkinTest::getUserId, item.getId()).orderByDesc(SkinTest::getTestDate).last("limit 1"));
+        SkinTest lastSkinTest = skinTestMapper.selectOne(new LambdaQueryWrapper<SkinTest>().eq(SkinTest::getIsDelete, 0).eq(SkinTest::getUserId, item.getId()).orderByDesc(SkinTest::getCreateTime).last("limit 1"));
         Checkin lastCheckin = checkinMapper.selectOne(new LambdaQueryWrapper<Checkin>().eq(Checkin::getIsDelete, 0).eq(Checkin::getUserId, item.getId()).orderByDesc(Checkin::getCheckinDate).last("limit 1"));
         return MiniUserItemVo.builder()
                 .id(item.getId())
@@ -310,7 +308,7 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
                 .lastLoginTime(item.getLastLoginTime())
                 .skinTestCount(skinTestCount)
                 .checkinCount(checkinCount)
-                .lastSkinTestDate(lastSkinTest == null || lastSkinTest.getTestDate() == null ? null : lastSkinTest.getTestDate().format(DATE_FORMATTER))
+                .lastSkinTestDate(lastSkinTest == null ? null : lastSkinTest.getCreateTime().format(DATE_FORMATTER))
                 .lastCheckinDate(lastCheckin == null || lastCheckin.getCheckinDate() == null ? null : lastCheckin.getCheckinDate().format(DATE_FORMATTER))
                 .createTime(item.getCreateTime())
                 .build();
@@ -329,6 +327,7 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
                 .sensitivityScore(item.getSensitivityScore())
                 .poreScore(item.getPoreScore())
                 .blackheadScore(item.getBlackheadScore())
+                .score(item.getScore())
                 .summary(item.getSummary())
                 .advice(item.getAdvice())
                 .createTime(item.getCreateTime())
@@ -405,10 +404,10 @@ public class MiniappAdminServiceImpl implements MiniappAdminService {
     private List<MiniStatItemVo> buildRecentSkinTestTrend() {
         return skinTestMapper.selectList(new LambdaQueryWrapper<SkinTest>()
                 .eq(SkinTest::getIsDelete, 0)
-                .orderByDesc(SkinTest::getTestDate)
+                .orderByDesc(SkinTest::getCreateTime)
                 .last("limit 30"))
                 .stream()
-                .collect(Collectors.groupingBy(item -> item.getTestDate().format(DATE_FORMATTER), Collectors.counting()))
+                .collect(Collectors.groupingBy(item -> item.getCreateTime().format(DATE_FORMATTER), Collectors.counting()))
                 .entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByKey())

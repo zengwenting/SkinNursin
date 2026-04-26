@@ -1,14 +1,23 @@
 package com.tacomall.apima.service.impl;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tacomall.apima.dto.ApiLoginRequest;
 import com.tacomall.apima.entity.UserProfile;
 import com.tacomall.apima.mapper.UserProfileMapper;
 import com.tacomall.apima.service.AuthService;
+import com.tacomall.apima.service.SysConfigService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,27 +26,38 @@ import lombok.RequiredArgsConstructor;
 public class AuthServiceImpl implements AuthService {
 
     private final UserProfileMapper userProfileMapper;
+    private final SysConfigService sysConfigService;
 
     @Override
     public UserProfile login(ApiLoginRequest request) {
-        // 这里简化处理，直接使用前端传来的 openid
-        // 实际项目中应该调用微信接口，使用 code 换取 openid
-        String openid = request.getOpenid();
+        String openid = null;
         
-        // 根据 openid 查询用户
+        try {
+            Map<String, String> config = sysConfigService.getConfig();
+            String appId = config.get("wx_app_id");
+            String appSecret = config.get("wx_app_secret");
+            
+            if (appId != null && appSecret != null && request.getCode() != null) {
+                openid = getOpenidFromWechat(appId, appSecret, request.getCode());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        if (openid == null || openid.isEmpty()) {
+            openid = "temp_openid_" + System.currentTimeMillis();
+        }
+        
         LambdaQueryWrapper<UserProfile> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(UserProfile::getOpenid, openid);
         UserProfile userProfile = userProfileMapper.selectOne(wrapper);
         
         if (userProfile != null) {
-            // 用户存在，更新信息
             userProfile.setNickname(request.getNickname());
             userProfile.setAvatar(request.getAvatar());
             userProfile.setLastLoginTime(LocalDateTime.now());
             userProfileMapper.updateById(userProfile);
         } else {
-            // 用户不存在，创建新用户
-            // 生成 account 编号，从 USER20260001 开始
             LambdaQueryWrapper<UserProfile> countWrapper = new LambdaQueryWrapper<>();
             countWrapper.select(UserProfile::getId);
             long count = userProfileMapper.selectCount(countWrapper);
@@ -57,5 +77,36 @@ public class AuthServiceImpl implements AuthService {
         }
         
         return userProfile;
+    }
+    
+    private String getOpenidFromWechat(String appId, String appSecret, String jsCode) throws Exception {
+        String urlStr = "https://api.weixin.qq.com/sns/jscode2session?appid=" + appId 
+                        + "&secret=" + appSecret 
+                        + "&js_code=" + jsCode 
+                        + "&grant_type=authorization_code";
+        
+        URL url = new URL(urlStr);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setConnectTimeout(5000);
+        conn.setReadTimeout(5000);
+        
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
+        StringBuilder response = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            response.append(line);
+        }
+        reader.close();
+        
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode jsonNode = mapper.readTree(response.toString());
+        
+        if (jsonNode.has("openid")) {
+            return jsonNode.get("openid").asText();
+        }
+        
+        return null;
     }
 }

@@ -71,13 +71,14 @@ CREATE TABLE IF NOT EXISTS `checkin_item` (
 CREATE TABLE IF NOT EXISTS `skin_test` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
-  `test_date` DATE NOT NULL,
+  `test_date` VARCHAR(255) DEFAULT NULL COMMENT '测试图片路径',
   `skin_type` VARCHAR(32) DEFAULT NULL,
   `hydration_score` INT DEFAULT NULL,
   `oiliness_score` INT DEFAULT NULL,
   `sensitivity_score` INT DEFAULT NULL,
   `pore_score` INT DEFAULT NULL,
   `blackhead_score` INT DEFAULT NULL,
+  `score` INT DEFAULT NULL COMMENT '测试总分',
   `summary` VARCHAR(255) DEFAULT NULL,
   `advice` VARCHAR(255) DEFAULT NULL,
   `is_delete` INT NOT NULL DEFAULT 0,
@@ -85,8 +86,6 @@ CREATE TABLE IF NOT EXISTS `skin_test` (
   `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
 
 CREATE TABLE IF NOT EXISTS `sys_config` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -102,6 +101,8 @@ CREATE TABLE IF NOT EXISTS `sys_config` (
 
 -- 插入预设数据
 INSERT INTO `sys_config` (`config_key`, `config_value`, `remark`) VALUES
+('wx_app_id', '', '微信小程序AppID'),
+('wx_app_secret', '', '微信小程序AppSecret'),
 ('ai_api_key', '', 'AI API Key'),
 ('ai_api_url', 'https://api.deepseek.com/v1', 'AI Base URL'),
 ('ai_model', 'deepseek-chat', '模型名称'),

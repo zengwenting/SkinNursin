@@ -21,7 +21,7 @@
         </button>
       </nav>
       <div class="sidebar_footer">
-        <p>统一查看小程序护理数据</p>
+        <p>提供皮肤护理小程序数据支持与管理</p>
       </div>
     </aside>
 

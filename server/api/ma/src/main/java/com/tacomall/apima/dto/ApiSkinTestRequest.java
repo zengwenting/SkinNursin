@@ -7,6 +7,8 @@ public class ApiSkinTestRequest {
 
     private Integer userId;
 
+    private String testDate;
+
     private String skinType;
 
     private Integer hydrationScore;
@@ -18,4 +20,10 @@ public class ApiSkinTestRequest {
     private Integer poreScore;
 
     private Integer blackheadScore;
+
+    private Integer score;
+
+    private String summary;
+
+    private String advice;
 }
